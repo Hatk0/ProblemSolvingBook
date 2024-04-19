@@ -147,3 +147,9 @@ let rectangleWidth = 7
 let rectangleResult = rectangleLength * rectangleWidth
 print(rectangleResult)
 print("--------------------------------------------")
+
+/// **№16. Длина окружности**
+let circumferenceLength = 10
+let circumResult = Double(circumferenceLength) / 2 * Double.pi
+print(circumResult)
+print("--------------------------------------------")
