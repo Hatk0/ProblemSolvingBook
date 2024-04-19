@@ -140,3 +140,10 @@ secondNumber = 5
 result = firstNumber * secondNumber
 print(result)
 print("--------------------------------------------")
+
+/// **№15. Площадь прямоугольника**
+let rectangleLength = 5
+let rectangleWidth = 7
+let rectangleResult = rectangleLength * rectangleWidth
+print(rectangleResult)
+print("--------------------------------------------")
