@@ -106,3 +106,11 @@ print("""
 Количество товара: \(laptop.quantity)
 """)
 print("--------------------------------------------")
+
+/// **№12. Typealias Rectangle**
+typealias Rectangle = (length: Double, width: Double)
+
+let firstRectangle: Rectangle = (length: 12.3, width: 3.7)
+let area = firstRectangle.length * firstRectangle.width
+print("Площадь прямоугольника: \(area)")
+print("--------------------------------------------")
