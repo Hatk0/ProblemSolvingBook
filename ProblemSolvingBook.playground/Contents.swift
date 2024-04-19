@@ -126,3 +126,10 @@ print("""
 Вторые координаты: \(secondCoordinates.width), \(secondCoordinates.longitude)
 """)
 print("--------------------------------------------")
+
+/// **№14. Произведение целых чисел**
+// Первый пример
+var firstNumber = 10
+var secondNumber = 7
+var result = firstNumber * secondNumber
+print(result)
