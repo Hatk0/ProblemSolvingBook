@@ -153,3 +153,14 @@ let circumferenceLength = 10
 let circumResult = Double(circumferenceLength) / 2 * Double.pi
 print(circumResult)
 print("--------------------------------------------")
+
+/// **№17. Деление без остатка**
+let firstDividerNumber = 6
+let secondDividerNumber = 2
+
+if firstDividerNumber % secondDividerNumber == 0 {
+    print("Первое число делится на второе и будет целое число")
+} else {
+    print("Что-то пошло не так :)")
+}
+print("--------------------------------------------")
