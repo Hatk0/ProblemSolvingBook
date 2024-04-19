@@ -46,3 +46,10 @@ let a = 5
 let b = 2
 let c = a * b
 print(c) // 10
+
+/// **№7. UInt**
+let d: UInt = 2
+let e: UInt = 5
+let sum: UInt = UInt(a + b) // не получится изначально сложить, так как не UInt, нужно приравнять к одному типу данных
+//let difference: UInt = d - e // будет краш, так как UIInt доходит до 0
+let secondDifference: UInt = UInt(abs(2 - 5)) // здесь нужна функция abs, так как будет использоваться для получения абсолютного значения числа
