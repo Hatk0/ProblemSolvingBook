@@ -133,3 +133,10 @@ var firstNumber = 10
 var secondNumber = 7
 var result = firstNumber * secondNumber
 print(result)
+
+// Обновление данных
+firstNumber = 15
+secondNumber = 5
+result = firstNumber * secondNumber
+print(result)
+print("--------------------------------------------")
