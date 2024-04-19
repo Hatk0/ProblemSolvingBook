@@ -114,3 +114,15 @@ let firstRectangle: Rectangle = (length: 12.3, width: 3.7)
 let area = firstRectangle.length * firstRectangle.width
 print("Площадь прямоугольника: \(area)")
 print("--------------------------------------------")
+
+/// **№13. Координаты**
+typealias Coordinates = (width: Double, longitude: Double)
+
+let firstCoordinates: Coordinates = (width: 2.131315645, longitude: 102.53135432)
+let secondCoordinates: Coordinates = (width: 52.5232413123, longitude: 213.445232352)
+
+print("""
+Первые координаты: \(firstCoordinates.width), \(firstCoordinates.longitude)
+Вторые координаты: \(secondCoordinates.width), \(secondCoordinates.longitude)
+""")
+print("--------------------------------------------")
