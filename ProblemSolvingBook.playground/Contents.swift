@@ -36,3 +36,13 @@ let paperType: String = "Linear"
 var currentPage: Int = 1
 var pageNotes: [Int] = [5, 15, 45]
 var bookmarkedPage: Int?
+
+/// **№5. Hello, World!**
+print("Hello, World!")
+print("--------------------------------------------")
+
+/// **№6. abc**
+let a = 5
+let b = 2
+let c = a * b
+print(c) // 10
