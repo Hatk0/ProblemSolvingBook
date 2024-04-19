@@ -53,3 +53,25 @@ let e: UInt = 5
 let sum: UInt = UInt(a + b) // не получится изначально сложить, так как не UInt, нужно приравнять к одному типу данных
 //let difference: UInt = d - e // будет краш, так как UIInt доходит до 0
 let secondDifference: UInt = UInt(abs(2 - 5)) // здесь нужна функция abs, так как будет использоваться для получения абсолютного значения числа
+
+/// **№8. Число pi**
+let doublePi: Double = Double.pi
+let floatPi: Float = Float.pi
+
+print("""
+Число pi с типом Double: \(doublePi)
+Число pi с типом Float: \(floatPi)
+""")
+
+if doublePi == Double.pi {
+    print("Double равен doublePi")
+} else {
+    print("Double не равен doublePi")
+}
+
+if floatPi == Float.pi {
+    print("Float равен floatPi")
+} else {
+    print("Float не равен floatPi")
+}
+print("--------------------------------------------")
