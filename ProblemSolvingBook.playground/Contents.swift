@@ -164,3 +164,9 @@ if firstDividerNumber % secondDividerNumber == 0 {
     print("Что-то пошло не так :)")
 }
 print("--------------------------------------------")
+
+/// **№18. Квадрат числа**
+let number: Double = 5.5
+var squareResult = pow(number, 2)
+print(squareResult)
+print("--------------------------------------------")
