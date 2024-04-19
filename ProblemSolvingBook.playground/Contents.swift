@@ -27,3 +27,12 @@ print("""
 Размер обуви: \(shoeSize)
 """)
 print("--------------------------------------------")
+
+/// **№4. Создание блокнота**
+let brand: String = "Attache Economy"
+let pageCount: Int = 120
+let sheetFormat: String = "A5"
+let paperType: String = "Linear"
+var currentPage: Int = 1
+var pageNotes: [Int] = [5, 15, 45]
+var bookmarkedPage: Int?
