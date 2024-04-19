@@ -209,3 +209,11 @@ if number1 >= maxNumber {
     print("Второе число больше максимального значения")
 }
 print("--------------------------------------------")
+
+/// **№22. Среднее арифметическое**
+let firstMark = 5
+let secondMark = 3
+let thirdMark = 4
+let arithmeticMean = Double(firstMark + secondMark + thirdMark) / 3
+print("Среднее арифметическое этих оценок: \(arithmeticMean)")
+print("--------------------------------------------")
