@@ -170,3 +170,14 @@ let number: Double = 5.5
 var squareResult = pow(number, 2)
 print(squareResult)
 print("--------------------------------------------")
+
+/// **№19. Равенство чисел**
+let firstEqualNumber = 5
+let secondEqualNumber = 3
+
+if firstEqualNumber == secondEqualNumber {
+    print("Первое число равно второму")
+} else {
+    print("Они не равны!")
+}
+print("--------------------------------------------")
