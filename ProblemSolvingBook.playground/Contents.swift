@@ -240,3 +240,27 @@ print("""
 Процент участников от общего числа преодолевших третий этап составляет \(thirdResult)%
 """)
 print("--------------------------------------------")
+
+/// **№25. Программа для кассового аппарата в продуктовом магазине**
+struct Product {
+    let name: String
+    let price: Int
+    let quantity: Int
+}
+
+let products: [Product] = [
+    Product(name: "Молоко", price: 100, quantity: 10),
+    Product(name: "Яйца", price: 270, quantity: 15),
+    Product(name: "Ълеб", price: 85, quantity: 8)
+]
+
+var totalSum = 0
+
+for product in products {
+    let sum = product.price * product.quantity
+    totalSum += sum
+    print("\(product.name) - \(product.quantity) шт. по \(product.price) руб.")
+}
+
+print("Общая сумма: \(totalSum) руб.")
+print("--------------------------------------------")
