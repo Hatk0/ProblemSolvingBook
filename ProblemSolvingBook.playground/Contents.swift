@@ -274,3 +274,22 @@ if isSnowing || temperature < -2 {
 } else {
     print("На улице не идет снег и температура воздуха \(temperature)°C выше -2, поэтому шапка не нужна.")
 }
+print("--------------------------------------------")
+
+/// **№27. Сколько купить?**
+let numberOfGuests = 9
+let cupsPerGuest = 2
+let cupCapacity = 175
+let totalCapacityPerGuest = cupsPerGuest * cupCapacity
+let totalCapacityForAllGuests = totalCapacityPerGuest * numberOfGuests
+let totalCapacityInLiters = totalCapacityForAllGuests / 1000
+
+let pricePerLiter = 0.45
+let totalPrice = Double(totalCapacityInLiters) * pricePerLiter
+let totalBottles = Int(totalCapacityInLiters)
+
+print("""
+Необходимо купить \(totalBottles) бутылок газировки.
+Общая сумма для покупки: $\(totalPrice)
+""")
+print("--------------------------------------------")
