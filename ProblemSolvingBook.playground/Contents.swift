@@ -217,3 +217,8 @@ let thirdMark = 4
 let arithmeticMean = Double(firstMark + secondMark + thirdMark) / 3
 print("Среднее арифметическое этих оценок: \(arithmeticMean)")
 print("--------------------------------------------")
+
+/// **№23. Четное/нечетное число**
+var randomNumber: Int = 4
+let isEvenNumber: Bool = randomNumber % 2 == 0
+print(isEvenNumber)
