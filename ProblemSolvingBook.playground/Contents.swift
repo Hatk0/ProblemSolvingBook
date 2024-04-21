@@ -293,3 +293,15 @@ print("""
 Общая сумма для покупки: $\(totalPrice)
 """)
 print("--------------------------------------------")
+
+/// **№28. Новогодние подарки**
+let sweetsInOneBox = 24
+let totalSweets = 567
+let totalBoxes = Double(totalSweets / sweetsInOneBox)
+let remainingSweets = totalSweets % sweetsInOneBox
+
+print("""
+Всего коробок: \(totalBoxes)
+Конфеты, которые можно скушать: \(remainingSweets)
+""")
+print("--------------------------------------------")
