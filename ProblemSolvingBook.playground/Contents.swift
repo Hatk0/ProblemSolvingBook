@@ -264,3 +264,13 @@ for product in products {
 
 print("Общая сумма: \(totalSum) руб.")
 print("--------------------------------------------")
+
+/// **№26. Нужна ли шапка?**
+var temperature = -3
+var isSnowing = false
+
+if isSnowing || temperature < -2 {
+    print("На улице идет снег или температура воздуха \(temperature)°C ниже -2, поэтому шапка нужна.")
+} else {
+    print("На улице не идет снег и температура воздуха \(temperature)°C выше -2, поэтому шапка не нужна.")
+}
