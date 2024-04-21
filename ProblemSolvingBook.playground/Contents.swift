@@ -222,3 +222,21 @@ print("--------------------------------------------")
 var randomNumber: Int = 4
 let isEvenNumber: Bool = randomNumber % 2 == 0
 print(isEvenNumber)
+print("--------------------------------------------")
+
+/// **№24. Статистика марафона**
+let totalParticipants = 5000
+let firstStage = 4685
+let secondStage = 1648
+let thirdStage = 526
+
+let firstResult = Double(firstStage) / Double(totalParticipants) * 100
+let secondResult = Double(secondStage) / Double(totalParticipants) * 100
+let thirdResult = Double(thirdStage) / Double(totalParticipants) * 100
+
+print("""
+Процент участников от общего числа преодолевших первый этап составляет \(firstResult)%
+Процент участников от общего числа преодолевших второй этап составляет \(secondResult)%
+Процент участников от общего числа преодолевших третий этап составляет \(thirdResult)%
+""")
+print("--------------------------------------------")
