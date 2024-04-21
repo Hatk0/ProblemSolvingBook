@@ -315,3 +315,11 @@ print("--------------------------------------------")
 let examGrade = 4
 print(examGrade >= 3 ? "Молодец, ты сдал!" : "Идешь на пересдачу")
 print("--------------------------------------------")
+
+/// **№31. Врачебная практика**
+var patientDiagnosis: (name: String, diagnosis: String?) = ("Иван Иванов", nil)
+print("""
+Имя: \(patientDiagnosis.name)
+Диагноз: \(patientDiagnosis.diagnosis ?? "Не обнаружено")
+""")
+print("--------------------------------------------")
