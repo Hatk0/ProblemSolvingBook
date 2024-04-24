@@ -347,3 +347,14 @@ let spacer = ", "
 let greeting = greet + spacer + greetingName
 print(greeting)
 print("--------------------------------------------")
+
+/// **№35. Школьное эссе**
+let loremText = """
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam rhoncus nulla et nulla sodales accumsan. Sed varius pretium
+sapien et auctor. Ut convallis at lectus et fermentum. Aliquam sapien neque, lobortis sodales sapien ut, pretium
+fringilla orci. Donec elementum non nunc ac elementum. Quisque iaculis, sapien et vulputate convallis, est.
+"""
+let components = loremText.components(separatedBy: .whitespacesAndNewlines)
+let words = components.filter { !$0.isEmpty }
+print(words.count)
+print("--------------------------------------------")
