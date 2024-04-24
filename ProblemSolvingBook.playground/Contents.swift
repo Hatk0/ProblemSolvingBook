@@ -480,3 +480,18 @@ if city == nil {
     print("Живу в каком-то городе")
 }
 print("--------------------------------------------")
+
+/// **№44. Имя пользователя**
+func extractUsername(from email: String) -> String? {
+    guard let atIndex = email.firstIndex(of: "@") else { return nil }
+    let username = email.prefix(upTo: atIndex)
+    return String(username)
+}
+
+let email = "example@example.com"
+if let username = extractUsername(from: email) {
+    print("Имя пользователя: \(username)")
+} else {
+    print("Неверный формат адреса электронной почты.")
+}
+print("--------------------------------------------")
