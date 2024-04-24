@@ -407,3 +407,11 @@ if enteredPassword == correctPassword {
 } else {
     print("Что-то пошло не так. Введите правильный пароль")
 }
+print("--------------------------------------------")
+
+/// **№39. У вас все получится!**
+var beOkayText = "Если это получилось у других, получится и у вас."
+print(beOkayText.uppercased())
+print(beOkayText.lowercased())
+print(beOkayText.capitalized)
+print("--------------------------------------------")
