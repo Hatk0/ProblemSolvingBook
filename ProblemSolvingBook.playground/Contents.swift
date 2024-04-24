@@ -553,3 +553,16 @@ func dayOfWeek(from number: Int) -> String {
 
 dayOfWeek(from: 4)
 print("--------------------------------------------")
+
+/// **№48.  Сумма Int + Double**
+let mathGrades = [5, 3, 5]
+let physicsGrades = [4.2, 4.75]
+
+let mathAverage = Double(mathGrades.reduce(0, +)) / Double(mathGrades.count)
+let physicsAverage = physicsGrades.reduce(0, +) / Double(physicsGrades.count)
+
+print("""
+Средний балл по математике: \(mathAverage)
+Средний балл по физике: \(physicsAverage)
+""")
+print("--------------------------------------------")
