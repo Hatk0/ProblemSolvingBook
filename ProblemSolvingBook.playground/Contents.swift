@@ -515,3 +515,16 @@ fringilla orci. Donec elementum non nunc ac elementum. Quisque iaculis, sapien e
 let trimText = trimMessage(message: message, maxLength: 20)
 print(trimText)
 print("--------------------------------------------")
+
+/// **№46. String в Int**
+let numberFour = "4"
+let numberSix = "6"
+
+let numberFourToInt = Int(numberFour)
+let numberSixToInt = Int(numberSix)
+
+print("""
+Число четыре: \(numberFourToInt ?? 0)
+Число шесть: \(numberSixToInt ?? 0)
+""")
+print("--------------------------------------------")
