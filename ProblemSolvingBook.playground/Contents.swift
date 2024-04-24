@@ -397,3 +397,13 @@ if let range = olgaGreeting.range(of: "привет") {
 
 print(olgaGreeting)
 print("--------------------------------------------")
+
+/// **№38. Проверка пароля**
+let correctPassword = "123456"
+var enteredPassword = "1245"
+
+if enteredPassword == correctPassword {
+    print("Ваш пароль совпадает")
+} else {
+    print("Что-то пошло не так. Введите правильный пароль")
+}
