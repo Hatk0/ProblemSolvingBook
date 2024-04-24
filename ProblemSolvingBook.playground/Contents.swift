@@ -330,7 +330,6 @@ let minimumAge = userSpecifiedMinimumAge ?? 18
 print("Минимально допустимый возраст зрителя: \(minimumAge)+")
 print("--------------------------------------------")
 
-
 /// **№33. Многострочный текст**
 let text = """
 «Я влюблена», - шептала снова
@@ -339,4 +338,12 @@ let text = """
 «Оставь меня: я влюблена»
 """
 print(text)
+print("--------------------------------------------")
+
+/// **№34. Hi, Mary**
+let greet = "Hi"
+let greetingName = "Mary"
+let spacer = ", "
+let greeting = greet + spacer + greetingName
+print(greeting)
 print("--------------------------------------------")
