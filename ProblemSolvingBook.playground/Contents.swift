@@ -438,3 +438,34 @@ let vowels: [Character] = ["а", "у", "о", "и", "э", "ы"]
 let replaced = String(starText.map { vowels.contains($0) ? Character("*") : $0 })
 print(replaced)
 print("--------------------------------------------")
+
+/// **№42. Количество слов, предложений, знаков**
+let textCount = """
+Наше представление о возможностях определяется тем, как мы оцениваем ситуацию. Что мы видим в
+ней: испытание или угрозу?
+Сосредотачиваемся на перспективе ее использования или на неудаче? Эти возможности - некоторые
+большие, некоторые совсем крошечные - встречаются каждый день. Одни их замечают, другие нет.
+Кто-то за них хватается, кто-то отталкивает. А что делаете вы?
+"""
+
+// Подсчет количества слов в тексте
+let numberOfWords = textCount.components(separatedBy: .whitespacesAndNewlines)
+let wordCount = numberOfWords.count
+
+// Подсчет количества предложений в тексте
+let sentences = textCount.components(separatedBy: [".", "?"]).filter { !$0.isEmpty }
+let sentenceCount = sentences.count
+
+
+// Подсчет количества знаков в тексте
+let punctuationCharacters = CharacterSet.punctuationCharacters
+let punctuationCount = textCount.unicodeScalars.reduce(0) { count, scalar in
+    return punctuationCharacters.contains(scalar) ? count + 1 : count
+}
+
+print("""
+Количество слов: \(wordCount)
+Количество предложений: \(sentenceCount)
+Количество знаков: \(punctuationCount)
+""")
+print("--------------------------------------------")
