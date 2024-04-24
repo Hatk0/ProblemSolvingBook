@@ -358,3 +358,20 @@ let components = loremText.components(separatedBy: .whitespacesAndNewlines)
 let words = components.filter { !$0.isEmpty }
 print(words.count)
 print("--------------------------------------------")
+
+/// **№36. Логин и пароль**
+let login = "ivanIvanov2000"
+let password = "123456"
+
+if login.isEmpty {
+    print("Логин не может быть пустым")
+} else {
+    print("С логином все хорошо")
+}
+
+if password.count < 6 {
+    print("Ваш пароль должен иметь минимум 6 символов")
+} else {
+    print("Ваш пароль соответствует нашим требованиям")
+}
+print("--------------------------------------------")
