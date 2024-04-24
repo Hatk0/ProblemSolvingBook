@@ -469,3 +469,14 @@ print("""
 Количество знаков: \(punctuationCount)
 """)
 print("--------------------------------------------")
+
+/// **№43. Nil-coalescing operator**
+var city: String? = nil
+var cityName = city
+
+if city == nil {
+    print("Unknown")
+} else {
+    print("Живу в каком-то городе")
+}
+print("--------------------------------------------")
