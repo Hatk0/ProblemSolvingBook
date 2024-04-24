@@ -415,3 +415,17 @@ print(beOkayText.uppercased())
 print(beOkayText.lowercased())
 print(beOkayText.capitalized)
 print("--------------------------------------------")
+
+/// **№40. Две "С"**
+let latinC = "C"
+let cyrillicC = "С"
+
+if cyrillicC == latinC {
+    print("Оба символа: \(cyrillicC.unicodeScalars.first?.value ?? 0)")
+} else {
+    print("""
+Кириллический 'С': \(cyrillicC.unicodeScalars.first?.value ?? 0)
+Латинский 'С': \(latinC.unicodeScalars.first?.value ?? 0)
+""")
+}
+print("--------------------------------------------")
