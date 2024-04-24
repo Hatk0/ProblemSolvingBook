@@ -323,3 +323,9 @@ print("""
 Диагноз: \(patientDiagnosis.diagnosis ?? "Не обнаружено")
 """)
 print("--------------------------------------------")
+
+/// **№32. Видеохостинг**
+var userSpecifiedMinimumAge: Int? = nil
+let minimumAge = userSpecifiedMinimumAge ?? 18
+print("Минимально допустимый возраст зрителя: \(minimumAge)+")
+print("--------------------------------------------")
