@@ -375,3 +375,25 @@ if password.count < 6 {
     print("Ваш пароль соответствует нашим требованиям")
 }
 print("--------------------------------------------")
+
+/// **№37. Оля, привет/пока!**
+var olgaGreeting = "оля, привет"
+olgaGreeting.append("!")
+
+if let index = olgaGreeting.firstIndex(of: "о") {
+    olgaGreeting.replaceSubrange(index...index, with: "О")
+}
+
+if let index = olgaGreeting.index(text.startIndex, offsetBy: olgaGreeting.count / 2, limitedBy: olgaGreeting.endIndex) {
+    if olgaGreeting[index] == "," {
+        let commaIndex = olgaGreeting.index(after: index)
+        olgaGreeting.replaceSubrange(commaIndex...commaIndex, with: "!")
+    }
+}
+
+if let range = olgaGreeting.range(of: "привет") {
+    olgaGreeting.replaceSubrange(range, with: "пока")
+}
+
+print(olgaGreeting)
+print("--------------------------------------------")
