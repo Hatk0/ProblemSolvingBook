@@ -495,3 +495,23 @@ if let username = extractUsername(from: email) {
     print("Неверный формат адреса электронной почты.")
 }
 print("--------------------------------------------")
+
+/// **№45. Обрезать сообщение**
+func trimMessage(message: String, maxLength: Int) -> String {
+    if message.count > maxLength {
+        let trimmedMessage = String(message.prefix(maxLength))
+        return trimmedMessage
+    } else {
+        return message
+    }
+}
+
+let message = """
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam rhoncus nulla et nulla sodales accumsan. Sed varius pretium
+sapien et auctor. Ut convallis at lectus et fermentum. Aliquam sapien neque, lobortis sodales sapien ut, pretium
+fringilla orci. Donec elementum non nunc ac elementum. Quisque iaculis, sapien et vulputate convallis, est.
+"""
+
+let trimText = trimMessage(message: message, maxLength: 20)
+print(trimText)
+print("--------------------------------------------")
