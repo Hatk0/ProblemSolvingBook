@@ -566,3 +566,12 @@ print("""
 Средний балл по физике: \(physicsAverage)
 """)
 print("--------------------------------------------")
+
+/// **№49.  Конвертер валют**
+let dollarAmount = 93.77
+let exchangeRate = 1.06
+
+let euroAmount = dollarAmount * exchangeRate
+let roundedEuroAmount = (euroAmount * 100).rounded() / 100
+print("По текущему курсу \(dollarAmount) долларов равны \(roundedEuroAmount) евро")
+print("--------------------------------------------")
