@@ -589,3 +589,13 @@ var setTwo: Set<String> = []
 var dictionaryOne: [String: Int] = [:]
 var dictionaryTwo = [String: Int]()
 var dictionaryThree: Dictionary<String, Int> = [:]
+
+/// **№53.  Проверка наличия словаря в корзине**
+let cart = ["Молоко", "Хлеб", "Яйца"]
+
+if !cart.isEmpty {
+    print("В карзине лежит \(cart.count) позиции")
+} else {
+    print("Корзина пустая")
+}
+print("--------------------------------------------")
