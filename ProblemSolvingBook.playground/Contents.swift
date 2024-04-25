@@ -584,3 +584,8 @@ var arrayThree = Array<String>()
 /// **№51.  Инициализация сета**
 var setOne = Set<String>()
 var setTwo: Set<String> = []
+
+/// **№52.  Инициализация словаря**
+var dictionaryOne: [String: Int] = [:]
+var dictionaryTwo = [String: Int]()
+var dictionaryThree: Dictionary<String, Int> = [:]
