@@ -575,3 +575,8 @@ let euroAmount = dollarAmount * exchangeRate
 let roundedEuroAmount = (euroAmount * 100).rounded() / 100
 print("По текущему курсу \(dollarAmount) долларов равны \(roundedEuroAmount) евро")
 print("--------------------------------------------")
+
+/// **№50.  Инициализация массива**
+var arrayOne: [String] = []
+var arrayTwo = [String]()
+var arrayThree = Array<String>()
