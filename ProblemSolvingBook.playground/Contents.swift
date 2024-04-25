@@ -645,3 +645,19 @@ for (key, value) in schoolLog {
 """)
 }
 print("--------------------------------------------")
+
+/// **№58.  E-mail рассылка**
+var emailsToSend = "bob@mail.com, alice@mail.com, david@mail.com, michael@mail.com, charlie@mail.com"
+var excludedEmails = "bob@mail.com, alice@mail.com"
+
+var emailsToSendArray = emailsToSend.components(separatedBy: ", ")
+var excludedEmailsArray = excludedEmails.components(separatedBy: ", ")
+
+var sendingStatus = ["alice@mail.com": "success", "charlie@mail.com": "success"]
+
+for (email, status) in sendingStatus {
+    print("""
+\(email): \(status)
+""")
+}
+print("--------------------------------------------")
