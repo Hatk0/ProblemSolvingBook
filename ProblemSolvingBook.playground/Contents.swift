@@ -608,3 +608,12 @@ for numbers in numbersArray {
     print(numbers)
 }
 print("--------------------------------------------")
+
+/// **№55.  Порядок элементов в массиве**
+// 1 вариант
+numbersArray.sort(by: >)
+print(numbersArray)
+
+// 2 вариант
+numbersArray.reverse()
+print(numbersArray)
