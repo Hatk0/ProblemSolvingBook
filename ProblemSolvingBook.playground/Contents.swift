@@ -580,3 +580,7 @@ print("--------------------------------------------")
 var arrayOne: [String] = []
 var arrayTwo = [String]()
 var arrayThree = Array<String>()
+
+/// **№51.  Инициализация сета**
+var setOne = Set<String>()
+var setTwo: Set<String> = []
