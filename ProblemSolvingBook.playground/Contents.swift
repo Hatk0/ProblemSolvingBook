@@ -631,3 +631,17 @@ for user in users {
 let uniqueUsersArray = Array(uniqueUsers)
 print(uniqueUsersArray)
 print("--------------------------------------------")
+
+/// **№57.  Школьный журнал**
+var schoolLog = [String: Int]()
+schoolLog["Дима"] = 5
+schoolLog["Алина"] = 5
+schoolLog["Ричард"] = 4
+schoolLog["Никита"] = 3
+
+for (key, value) in schoolLog {
+    print("""
+\(key): \(value)
+""")
+}
+print("--------------------------------------------")
