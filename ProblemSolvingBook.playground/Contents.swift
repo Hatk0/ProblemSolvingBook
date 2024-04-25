@@ -617,3 +617,17 @@ print(numbersArray)
 // 2 вариант
 numbersArray.reverse()
 print(numbersArray)
+print("--------------------------------------------")
+
+/// **№56.  Уникальные пользователи**
+var users = ["Bob", "Alice", "Richard", "Carlson", "Adam", "Bob", "Carl", "Adam"]
+
+var uniqueUsers = Set<String>()
+
+for user in users {
+    uniqueUsers.insert(user)
+}
+
+let uniqueUsersArray = Array(uniqueUsers)
+print(uniqueUsersArray)
+print("--------------------------------------------")
