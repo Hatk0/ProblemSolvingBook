@@ -757,3 +757,24 @@ func findCommonLetters(firstWord: String, secondWord: String) -> String {
 let commonLettersResult = findCommonLetters(firstWord: "Дима", secondWord: "Алина")
 print(commonLettersResult)
 print("--------------------------------------------")
+
+/// **№67. Температура воды**
+let currentTemperature = 21
+
+switch currentTemperature {
+case Int.min..<0:
+    print("лед, можно добавить в холодные напитки")
+case 0...15:
+    print("холодная вода и напитки")
+case 15...37:
+    print("вода и напитки комнатной температуры")
+case 70...85:
+    print("можно заварить зеленый чай")
+case 85...95:
+    print("можно заварить черный чай")
+case 95...100:
+    print("кипяток, можно варить кофе")
+default:
+    print("Неизвестная температура воды")
+}
+print("--------------------------------------------")
