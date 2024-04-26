@@ -600,7 +600,7 @@ if !cart.isEmpty {
 }
 print("--------------------------------------------")
 
-/// **№54.  Добавление и удаление элементов из массива**
+/// **№54. Добавление и удаление элементов из массива**
 var numbersArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 numbersArray.removeFirst()
 
@@ -609,7 +609,7 @@ for numbers in numbersArray {
 }
 print("--------------------------------------------")
 
-/// **№55.  Порядок элементов в массиве**
+/// **№55. Порядок элементов в массиве**
 // 1 вариант
 numbersArray.sort(by: >)
 print(numbersArray)
@@ -619,7 +619,7 @@ numbersArray.reverse()
 print(numbersArray)
 print("--------------------------------------------")
 
-/// **№56.  Уникальные пользователи**
+/// **№56. Уникальные пользователи**
 var users = ["Bob", "Alice", "Richard", "Carlson", "Adam", "Bob", "Carl", "Adam"]
 
 var uniqueUsers = Set<String>()
@@ -632,7 +632,7 @@ let uniqueUsersArray = Array(uniqueUsers)
 print(uniqueUsersArray)
 print("--------------------------------------------")
 
-/// **№57.  Школьный журнал**
+/// **№57. Школьный журнал**
 var schoolLog = [String: Int]()
 schoolLog["Дима"] = 5
 schoolLog["Алина"] = 5
@@ -646,7 +646,7 @@ for (key, value) in schoolLog {
 }
 print("--------------------------------------------")
 
-/// **№58.  E-mail рассылка**
+/// **№58. E-mail рассылка**
 var emailsToSend = "bob@mail.com, alice@mail.com, david@mail.com, michael@mail.com, charlie@mail.com"
 var excludedEmails = "bob@mail.com, alice@mail.com"
 
@@ -662,7 +662,7 @@ for (email, status) in sendingStatus {
 }
 print("--------------------------------------------")
 
-/// **№59.  Медиа-файлы**
+/// **№59. Медиа-файлы**
 let mediaFiles = ["file1.jpeg", "file2.mov", "file3.mp4", "file4.png"]
 var photos = [String]()
 var videos = [String]()
@@ -693,14 +693,14 @@ printFileInfo(files: photos, type: "photo")
 printFileInfo(files: videos, type: "video")
 print("--------------------------------------------")
 
-/// **№60.  Числовая последовательность**
+/// **№60. Числовая последовательность**
 let numberTen = 10
 for i in 1...numberTen {
     print(i)
 }
 print("--------------------------------------------")
 
-/// **№61.  Диапазон в массиве**
+/// **№61. Диапазон в массиве**
 let alphabetArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
 let startIndex = 1
 let endIndex = 5
@@ -710,19 +710,19 @@ for index in startIndex...endIndex {
 }
 print("--------------------------------------------")
 
-/// **№62.  Обратный порядок**
+/// **№62. Обратный порядок**
 for i in (1...10).reversed() {
     print(i)
 }
 print("--------------------------------------------")
 
-/// **№63.  Умножение на 5**
+/// **№63. Умножение на 5**
 for i in 1...10 {
     print(i * 5)
 }
 print("--------------------------------------------")
 
-/// **№64.  Счетчик суммы чисел**
+/// **№64. Счетчик суммы чисел**
 var sumNumbers = 0
 let countNumbers = 10
 var i = 1
@@ -733,3 +733,10 @@ while i <= countNumbers {
 }
 
 print("Сумма чисел от \(i) до \(countNumbers) равна \(sumNumbers)")
+print("--------------------------------------------")
+
+/// **№65. Уникальность слов в тексте**
+let uniqueArray = ["A", "B", "B", "C", "D", "A", "E", "D"]
+let unique = Array(Set(uniqueArray))
+print(unique)
+print("--------------------------------------------")
