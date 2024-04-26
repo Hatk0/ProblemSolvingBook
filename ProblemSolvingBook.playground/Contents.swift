@@ -778,3 +778,17 @@ default:
     print("Неизвестная температура воды")
 }
 print("--------------------------------------------")
+
+/// **№68. Уникальные символов в тексте**
+func countUniqueLettersInText(in text: String) -> Int {
+    var uniqueCharacters = Set<String>()
+    for character in uniqueCharacters {
+        uniqueCharacters.insert(character)
+    }
+    
+    return uniqueCharacters.count
+}
+
+let uniqueLettersInTextResult = countUniqueLettersInText(in: loremText)
+print("Уникальное количество символов в тексте составляет \(uniqueLettersInTextResult)")
+print("--------------------------------------------")
