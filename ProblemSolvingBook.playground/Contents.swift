@@ -661,3 +661,33 @@ for (email, status) in sendingStatus {
 """)
 }
 print("--------------------------------------------")
+
+/// **№59.  Медиа-файлы**
+let mediaFiles = ["file1.jpeg", "file2.mov", "file3.mp4", "file4.png"]
+var photos = [String]()
+var videos = [String]()
+
+for file in mediaFiles {
+    let fileExtension = (file as NSString).pathExtension.lowercased()
+    
+    switch fileExtension {
+    case "jpeg", "png":
+        photos.append(file)
+    case "mov", "mp4":
+        videos.append(file)
+    default:
+        break
+    }
+}
+
+func printFileInfo(files: [String], type: String) {
+    print("\(type.uppercased()):")
+    for file in files {
+        let fileName = (file as NSString).lastPathComponent
+        let fileExtension = (file as NSString).pathExtension.lowercased()
+        print("Файл: \(fileName), Расширение файла: \(fileExtension)")
+    }
+}
+
+printFileInfo(files: photos, type: "photo")
+printFileInfo(files: videos, type: "video")
