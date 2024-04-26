@@ -699,3 +699,13 @@ for i in 1...numberTen {
     print(i)
 }
 print("--------------------------------------------")
+
+/// **№61.  Диапазон в массиве**
+let alphabetArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
+let startIndex = 1
+let endIndex = 5
+
+for index in startIndex...endIndex {
+    print(alphabetArray[index])
+}
+print("--------------------------------------------")
