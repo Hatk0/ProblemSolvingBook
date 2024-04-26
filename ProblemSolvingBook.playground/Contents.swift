@@ -721,3 +721,15 @@ for i in 1...10 {
     print(i * 5)
 }
 print("--------------------------------------------")
+
+/// **№64.  Счетчик суммы чисел**
+var sumNumbers = 0
+let countNumbers = 10
+var i = 1
+
+while i <= countNumbers {
+    sumNumbers += 1
+    i += 1
+}
+
+print("Сумма чисел от \(i) до \(countNumbers) равна \(sumNumbers)")
