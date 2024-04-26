@@ -832,3 +832,13 @@ var name: String? = "John"
 print(name!)
 print(name ?? "Джон")
 print("--------------------------------------------")
+
+/// **№71. Optional Binding**
+var personAge: Int? = 30
+
+if let age = personAge {
+    print(age)
+} else {
+    print("Неизвестный возраст человека")
+}
+print("--------------------------------------------")
