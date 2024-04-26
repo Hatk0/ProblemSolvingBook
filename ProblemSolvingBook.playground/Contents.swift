@@ -691,3 +691,11 @@ func printFileInfo(files: [String], type: String) {
 
 printFileInfo(files: photos, type: "photo")
 printFileInfo(files: videos, type: "video")
+print("--------------------------------------------")
+
+/// **№60.  Числовая последовательность**
+let numberTen = 10
+for i in 1...numberTen {
+    print(i)
+}
+print("--------------------------------------------")
