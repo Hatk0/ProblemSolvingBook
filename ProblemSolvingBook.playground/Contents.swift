@@ -740,3 +740,20 @@ let uniqueArray = ["A", "B", "B", "C", "D", "A", "E", "D"]
 let unique = Array(Set(uniqueArray))
 print(unique)
 print("--------------------------------------------")
+
+/// **№66. Общие буквы**
+func findCommonLetters(firstWord: String, secondWord: String) -> String {
+    var commonLetters = ""
+    
+    for letter in firstWord {
+        if secondWord.contains(letter) && !commonLetters.contains(letter) {
+            commonLetters.append(letter)
+        }
+    }
+    
+    return commonLetters
+}
+
+let commonLettersResult = findCommonLetters(firstWord: "Дима", secondWord: "Алина")
+print(commonLettersResult)
+print("--------------------------------------------")
