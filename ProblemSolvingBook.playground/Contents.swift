@@ -709,3 +709,9 @@ for index in startIndex...endIndex {
     print(alphabetArray[index])
 }
 print("--------------------------------------------")
+
+/// **№62.  Диапазон в массиве**
+for i in (1...10).reversed() {
+    print(i)
+}
+print("--------------------------------------------")
