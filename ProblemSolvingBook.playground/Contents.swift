@@ -779,7 +779,7 @@ default:
 }
 print("--------------------------------------------")
 
-/// **№68. Уникальные символов в тексте**
+/// **№68. Уникальное количество символов в тексте**
 func countUniqueLettersInText(in text: String) -> Int {
     var uniqueCharacters = Set<String>()
     for character in uniqueCharacters {
@@ -792,3 +792,36 @@ func countUniqueLettersInText(in text: String) -> Int {
 let uniqueLettersInTextResult = countUniqueLettersInText(in: loremText)
 print("Уникальное количество символов в тексте составляет \(uniqueLettersInTextResult)")
 print("--------------------------------------------")
+
+/// **№69. Учетные записи пользователей**
+var usersAccount = [String: String]()
+
+func addUser(user: String, email: String) {
+    if usersAccount[user] != nil {
+        print("Такой пользователь с именем \(user) существует")
+    } else {
+        usersAccount[user] = email
+        print("Пользователь \(user) успешно добавлен")
+    }
+}
+
+func removeUser(user: String) {
+    if let _ = usersAccount.removeValue(forKey: user) {
+        print("Пользователь с именем \(user) успешно удален")
+    } else {
+        print("Пользователя с именем \(user) не существует")
+    }
+}
+
+// Добавление пользователей
+addUser(user: "Иван Иванов", email: "ivanIvanov@gmail.com")
+addUser(user: "Иван Петров", email: "ivanPetrov@mail.ru")
+
+// Добавляю одинакового пользователя
+addUser(user: "Иван Петров", email: "ivanPetrov@mail.ru")
+
+// Удаление существующего пользователя
+removeUser(user: "Иван Иванов")
+
+// Проверка несуществующего пользователя
+removeUser(user: "Иван Иванов")
