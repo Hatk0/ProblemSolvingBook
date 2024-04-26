@@ -842,3 +842,13 @@ if let age = personAge {
     print("Неизвестный возраст человека")
 }
 print("--------------------------------------------")
+
+/// **№72. Guard**
+var score: Int? = 90
+
+guard let unwrappedValue = score else {
+    fatalError()
+}
+
+print(unwrappedValue)
+print("--------------------------------------------")
