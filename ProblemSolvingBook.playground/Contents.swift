@@ -936,3 +936,32 @@ for number in range {
     }
 }
 print("--------------------------------------------")
+
+/// **№77. Игра "Угадай число"**
+// Генерируем случайное число от 1 до 100
+let randomNumberRange = Int.random(in: 1...100)
+var guessed = false
+
+let possibleAnswers = Array(1...100) // Все числа от 1 до 100 как возможные ответы
+
+repeat {
+    let randomIndex = Int.random(in: 0..<possibleAnswers.count)
+    let guess = possibleAnswers[randomIndex]
+    
+    print("Угадайте число от 1 до 100:")
+    guard (1...100).contains(guess) else {
+        print("Введите корректное число от 1 до 100!")
+        continue
+    }
+    
+    // Проверяем, угадал ли пользователь число
+    if guess == randomNumberRange {
+        print("Поздравляем! Вы угадали число \(randomNumberRange)!")
+        guessed = true
+    } else if guess < randomNumberRange {
+        print("Неверно. Загаданное число больше.")
+    } else {
+        print("Неверно. Загаданное число меньше.")
+    }
+} while !guessed
+print("--------------------------------------------")
