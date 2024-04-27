@@ -916,3 +916,23 @@ while batteryLevel > 0 {
     }
 }
 print("--------------------------------------------")
+
+/// **№76. Поиск простого числа в диапазоне**
+let range = 2..<100
+
+for number in range {
+    var isPrime = true
+    
+    for i in 2..<number {
+        if number % 1 == 0 {
+            isPrime = false
+            break
+        }
+    }
+     
+    if isPrime {
+        print("Первое простое число в диапазоне: \(number)")
+        break
+    }
+}
+print("--------------------------------------------")
