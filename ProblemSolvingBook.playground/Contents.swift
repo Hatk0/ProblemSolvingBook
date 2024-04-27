@@ -1120,3 +1120,15 @@ func ageVerification(age personAge: Int?) -> String {
 print(ageVerification(age: 13))
 print(ageVerification(age: -2))
 print(ageVerification(age: nil))
+print("--------------------------------------------")
+
+/// **№86. Factorial**
+func factorial(_ number: Int) -> Int {
+    guard number != 0 else { return 1 }
+    
+    return (1...number).reduce(1, { $0 * $1 })
+}
+
+print(factorial(0))
+print(factorial(5))
+print("--------------------------------------------")
