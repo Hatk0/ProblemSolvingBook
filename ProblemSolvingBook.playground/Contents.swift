@@ -1102,3 +1102,21 @@ func greet(name personName: String) {
 
 greet(name: "Дима")
 print("--------------------------------------------")
+
+/// **№85. Проверка возраста**
+func ageVerification(age personAge: Int?) -> String {
+    guard let age = personAge else {
+        return "Укажите возраст"
+    }
+    
+    switch age {
+    case 0...120:
+        return "Возраст допустим"
+    default:
+        return "Возраст недопустим"
+    }
+}
+
+print(ageVerification(age: 13))
+print(ageVerification(age: -2))
+print(ageVerification(age: nil))
