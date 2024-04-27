@@ -1076,3 +1076,11 @@ let substring = "abr"
 let occurrenciesResult = findOccurrences(in: string, of: substring)
 print(occurrenciesResult)
 print("--------------------------------------------")
+
+/// **№82. Простая функция**
+func printSmile() {
+    print("Улыбнись 🙂")
+}
+
+printSmile()
+print("--------------------------------------------")
