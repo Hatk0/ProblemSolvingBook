@@ -965,3 +965,36 @@ repeat {
     }
 } while !guessed
 print("--------------------------------------------")
+
+/// **№78. Оценка результатов тестирования**
+let pupils = [
+    (name: "Иван", writtenScore: 80, oralScore: 75),
+    (name: "Петр", writtenScore: 90, oralScore: 80),
+    (name: "Егор", writtenScore: 55, oralScore: 40),
+    (name: "Глеб", writtenScore: 60, oralScore: 75),
+    (name: "Альберт", writtenScore: 73, oralScore: 67),
+    (name: "Артем", writtenScore: 64, oralScore: 86),
+    (name: "Мишель", writtenScore: 40, oralScore: 67),
+    (name: "Марк", writtenScore: 70, oralScore: 60),
+    (name: "Михаил", writtenScore: 65, oralScore: 80),
+    (name: "Павел", writtenScore: 65, oralScore: 98),
+]
+
+for pupil in pupils {
+    let writtenScore = pupil.writtenScore
+    let oralScore = pupil.oralScore
+    var grade = ""
+    
+    switch (writtenScore, oralScore) {
+    case let (x, y) where x > 80 && y > 60:
+        grade = "Отлично"
+    case let (x, y) where x > 60 && y > 50:
+        grade = "Хорошо"
+    case let (x, y) where x < 60 && y < 50:
+        grade = "Плохо"
+    default:
+        break
+    }
+    
+    print("Ученик \(pupil.name): \(grade)")
+}
