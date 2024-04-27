@@ -1051,3 +1051,28 @@ default:
 }
 print(greetingMessage)
 print("--------------------------------------------")
+
+/// **№81. Строка или подстрока**
+func findOccurrences(in string: String, of substring: String) -> [Int] {
+    var occurrences: [Int] = []
+    
+    for (index, _) in string.enumerated() {
+        let startIndex = string.index(string.startIndex, offsetBy: index)
+        let endIndex = string.index(startIndex,
+                                    offsetBy: substring.count,
+                                    limitedBy: string.endIndex) ?? string.endIndex
+        
+        if string[startIndex..<endIndex] == substring {
+            occurrences.append(index)
+        }
+    }
+    
+    return occurrences
+}
+
+// Пример использования:
+let string = "abracadabra"
+let substring = "abr"
+let occurrenciesResult = findOccurrences(in: string, of: substring)
+print(occurrenciesResult)
+print("--------------------------------------------")
