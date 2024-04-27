@@ -998,3 +998,29 @@ for pupil in pupils {
     
     print("Ученик \(pupil.name): \(grade)")
 }
+
+/// **№79. Фильтрация пользователей в социальной сети**
+let userNameList = [
+    "Gregory Valentine",
+    "Jad Vang",
+    "Madisyn Boyle",
+    "Robin O’brien",
+    "Kensley Blake",
+    "Karter Strong",
+    "Isaac Noble",
+    "Emerald Robbins"
+]
+let activeUsers = [
+    "Madisyn Boyle",
+    "Robin O’brien",
+    "Kensley Blake",
+    "Karter Strong",
+    "Isaac Noble"
+]
+
+print("Активные пользователи:")
+for user in userNameList {
+    if activeUsers.contains(user) {
+        print(user)
+    }
+}
