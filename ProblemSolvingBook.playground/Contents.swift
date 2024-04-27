@@ -882,3 +882,21 @@ print("""
 Уникальные скиллы на одного сотрудника: \(uniqueSkillsPerEmployee)
 """)
 print("--------------------------------------------")
+
+/// **№74. Собираем чемоданы**
+let yourItems: Set<String> = ["плавки", "полотенца", "крем от загара", "ноутбук", "книжка"]
+let friendItems: Set<String> = ["плавки", "полотенца", "крем от загара", "книжка", "ручка", "блокнот"]
+
+// Определяю общие вещи
+let commonItems = yourItems.intersection(friendItems)
+
+// Проверка списка на подмножества и надмножества списка друга
+let isStrictSubset = yourItems.isStrictSubset(of: friendItems)
+let isStrictSuperset = yourItems.isStrictSuperset(of: friendItems)
+
+print("""
+Общие вещи: \(commonItems)
+Мой список является списком подмножества списка друга: \(isStrictSubset)
+Мой список является списком надмножсетва списка друга: \(isStrictSuperset)
+""")
+print("--------------------------------------------")
