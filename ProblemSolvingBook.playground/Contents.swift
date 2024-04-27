@@ -852,3 +852,33 @@ guard let unwrappedValue = score else {
 
 print(unwrappedValue)
 print("--------------------------------------------")
+
+/// **№73. Навыки сотрудников**
+// Спсок сотрудников и их скиллов
+let employeesSkills: [String: Set<String>] = [
+    "Alice": ["Python", "SQL", "ML"],
+    "Tom": ["Java", "Rust", "SQL"],
+    "Albert": ["Swift", "Java", "Kotlin"],
+    "David": ["HTML", "JavaScript", "CSS"]
+]
+
+// Массив всех скиллов сотрудников
+let allSkills = Array(employeesSkills.values.joined())
+
+// Cеты для общих, уникальных и уникальных для каждого сотрудника навыков
+var commonSkills = Set(employeesSkills.values.first!)
+var uniqueSkills = Set<String>()
+var uniqueSkillsPerEmployee = Set<String>()
+
+for (_, skill) in employeesSkills {
+    commonSkills.formIntersection(skill)
+    uniqueSkills.formUnion(skill.subtracting(commonSkills))
+    uniqueSkillsPerEmployee.formSymmetricDifference(skill)
+}
+
+print("""
+Общие скиллы: \(commonSkills)
+Уникальные скиллы: \(uniqueSkills)
+Уникальные скиллы на одного сотрудника: \(uniqueSkillsPerEmployee)
+""")
+print("--------------------------------------------")
