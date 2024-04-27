@@ -900,3 +900,19 @@ print("""
 Мой список является списком надмножсетва списка друга: \(isStrictSuperset)
 """)
 print("--------------------------------------------")
+
+/// **№75. Путешествие на электровелосипеде**
+var distanceTravelled = 0
+var batteryLevel = 100
+
+while batteryLevel > 0 {
+    batteryLevel -= 10
+    print("Текущее состояние баттареи: \(batteryLevel)")
+    distanceTravelled += 20
+    print("Пройденное расстояние: \(distanceTravelled)")
+    
+    if batteryLevel == 0 {
+        print("Энергия закончилась, путешествие подошло к концу ;(")
+    }
+}
+print("--------------------------------------------")
