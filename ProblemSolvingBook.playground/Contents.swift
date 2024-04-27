@@ -998,6 +998,7 @@ for pupil in pupils {
     
     print("Ученик \(pupil.name): \(grade)")
 }
+print("--------------------------------------------")
 
 /// **№79. Фильтрация пользователей в социальной сети**
 let userNameList = [
@@ -1024,3 +1025,29 @@ for user in userNameList {
         print(user)
     }
 }
+print("--------------------------------------------")
+
+/// **№80. Switch + fallthrough**
+let myAge = 22
+var greetingMessage = ""
+
+switch myAge {
+case 0...2:
+    greetingMessage += "Привет, малыш!"
+    fallthrough
+case 3...12:
+    greetingMessage += "Привет, мальчик!"
+    fallthrough
+case 13...18:
+    greetingMessage += "Привет, подросток!"
+    fallthrough
+case 19...30:
+    greetingMessage += "Здравствуйте, молодой человек!"
+case 31...50:
+    greetingMessage += "Здравствуйте, мужчина!"
+    fallthrough
+default:
+    break
+}
+print(greetingMessage)
+print("--------------------------------------------")
