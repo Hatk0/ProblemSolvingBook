@@ -1084,3 +1084,13 @@ func printSmile() {
 
 printSmile()
 print("--------------------------------------------")
+
+/// **№83. Два аргумента и return value**
+func multiply(_ firstArgument: Int, _ secondArgument: Int) -> Int {
+    let result = firstArgument * secondArgument
+    return result
+}
+
+let multiplyResult = multiply(20, 10)
+print(multiplyResult)
+print("--------------------------------------------")
