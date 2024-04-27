@@ -1094,3 +1094,11 @@ func multiply(_ firstArgument: Int, _ secondArgument: Int) -> Int {
 let multiplyResult = multiply(20, 10)
 print(multiplyResult)
 print("--------------------------------------------")
+
+/// **№84. Argument label**
+func greet(name personName: String) {
+    print("Привет, \(personName)!")
+}
+
+greet(name: "Дима")
+print("--------------------------------------------")
