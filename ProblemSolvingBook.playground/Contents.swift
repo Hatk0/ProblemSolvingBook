@@ -1132,3 +1132,27 @@ func factorial(_ number: Int) -> Int {
 print(factorial(0))
 print(factorial(5))
 print("--------------------------------------------")
+
+/// **№87. Строка в число**
+func convertToInt(string: String) -> Int? {
+    if let integer = Int(string) {
+        return integer
+    } else {
+        return nil
+    }
+}
+
+// Удачный исход
+if let result = convertToInt(string: "42") {
+    print("Преобразованное целое число: \(result)")
+} else {
+    print("Не удалось преобразовать целое число")
+}
+
+// Выдаст ошибку, т.к. не Int
+if let result = convertToInt(string: "abc") {
+    print("Преобразованное целое число: \(result)")
+} else {
+    print("Не удалось преобразовать целое число")
+}
+print("--------------------------------------------")
