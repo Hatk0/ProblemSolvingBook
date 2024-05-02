@@ -1233,3 +1233,13 @@ let quanitity = 15
 
 print(calculateOrderCost(product, quantity: quanitity))
 print("--------------------------------------------")
+
+/// **№92. Стоимость поездки на машине**
+func calculateTripCost(_ fuelConsuption: Double, fuelPrice: Double, distance: Double) -> Double {
+    let fuelConsupted = (fuelConsuption / 100) * distance
+    let totalCost = fuelConsupted * fuelPrice
+    return totalCost
+}
+
+print(calculateTripCost(100, fuelPrice: 92, distance: 200))
+print("--------------------------------------------")
