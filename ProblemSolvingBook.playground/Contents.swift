@@ -1325,3 +1325,18 @@ func calculateExpression(with numbers: String) -> Int {
 
 calculateExpression(with: "2 + 3")
 print("--------------------------------------------")
+
+/// **№97. Генерация случайного пароля**
+func generateRandomPassword(with passwordLength: Int) -> String {
+    let passwordLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+    var passWord = ""
+    
+    for _ in 0..<passwordLength {
+        passWord.append(passwordLetters.randomElement()!)
+    }
+    
+    return passWord
+}
+
+print("Сгенерированный пароль: \(generateRandomPassword(with: 20))")
+print("--------------------------------------------")
