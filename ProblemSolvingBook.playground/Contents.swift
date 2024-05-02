@@ -1189,3 +1189,36 @@ let secondEmail = "ivanIvanov@mailru"
 print(isValidEmail(firstEmail))
 print(isValidEmail(secondEmail))
 print("--------------------------------------------")
+
+/// **№90. Общая стоимость покупок**
+func calculateTotal(_ productPrice: [Double]) -> Double {
+    let totalCost = productPrice.reduce(0, +)
+    
+    return totalCost
+}
+
+let productPrice = [
+    5.16,
+    90.75,
+    16.53,
+    89.43,
+    107.18,
+    7.51,
+    16.85,
+    19.76,
+    88.47,
+    50.07,
+    44.52,
+    50.93,
+    38.99,
+    88.00,
+    48.80,
+    8.38,
+    100.98,
+    15.57,
+    108.70,
+    30.06,
+]
+
+print(calculateTotal(productPrice))
+print("--------------------------------------------")
