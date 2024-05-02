@@ -1469,3 +1469,19 @@ func calculateStatistics(_ numbers: [Int]) -> (average: Double,
 let numbers = [10, 12, 6, 62, 21, 78, 90, 1]
 print(calculateStatistics(numbers) ?? [])
 print("--------------------------------------------")
+
+/// **№106. Произвольное количество параметров функции**
+func calculateAverage(_ numbers: Double...) -> Double? {
+    guard !numbers.isEmpty else { return nil }
+    
+    let sum = numbers.reduce(0, +)
+    let average = sum / Double(numbers.count)
+    return average
+}
+
+if let average = calculateAverage(10.0, 20.2, 30.5, 5.8, 2.0, 90.0, 123.52, 23.12, 16.9) {
+    print(average)
+} else {
+    print("Что-то пошло не так...")
+}
+print("--------------------------------------------")
