@@ -1257,3 +1257,29 @@ func calculateInterest(initialAmount: Double,
 
 print(calculateInterest(initialAmount: 1_000_000, annualPercentage: 16, term: 2))
 print("--------------------------------------------")
+
+/// **№94. Конвертер валют 2**
+let converterDictionary: [String: Double] = [
+    "usd": 1.0,
+    "eur": 0.85,
+    "rub": 97.52,
+    "jpy": 110.21
+]
+
+func convertCurrency(sum: Double, currencyType: String, currencySelection: String) -> Double? {
+    guard let fromRate = converterDictionary[currencyType],
+          let toRate = converterDictionary[currencySelection] else {
+        return nil
+    }
+    
+    let convertedAmount = sum * fromRate / toRate
+    print("\(sum) \(currencyType.lowercased()) обменено на \(convertedAmount) \(fromRate / toRate)")
+    return convertedAmount
+}
+
+if let convertedAmount = convertCurrency(sum: 100,
+                                         currencyType: "usd",
+                                         currencySelection: "eur") {
+    print("Результат обмена: \(convertedAmount)")
+}
+print("--------------------------------------------")
