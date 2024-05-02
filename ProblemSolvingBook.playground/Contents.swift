@@ -1404,3 +1404,15 @@ let oddsBeforeEventsArray = [1,4,3,7,8,11,12,27,18]
 let sortNumbersResult = sortNumbers(oddsBeforeEventsArray)
 print(sortNumbersResult)
 print("--------------------------------------------")
+
+/// **№102. Inout параметр**
+func incrementNumber(_ number: inout Int) {
+    let randomElement = Int.random(in: 1...100)
+    number += randomElement
+}
+
+var increment = 10
+incrementNumber(&increment)
+
+print("Значение переменной после увеличения: \(increment)")
+print("--------------------------------------------")
