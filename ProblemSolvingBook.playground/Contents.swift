@@ -1416,3 +1416,16 @@ incrementNumber(&increment)
 
 print("Значение переменной после увеличения: \(increment)")
 print("--------------------------------------------")
+
+/// **№103. Добавление товаров в список покупок**
+func modifyShoppingList(_ shoppingList: inout [String], withItems items: [String]) {
+    shoppingList.append(contentsOf: items)
+}
+
+var shoppingList = ["Яйца", "Молоко", "Хлеб"]
+let additionalItems = ["Сметана", "Творог"]
+
+modifyShoppingList(&shoppingList, withItems: additionalItems)
+
+print("Список покупок после изменения: \(shoppingList)")
+print("--------------------------------------------")
