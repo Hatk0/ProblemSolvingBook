@@ -1429,3 +1429,24 @@ modifyShoppingList(&shoppingList, withItems: additionalItems)
 
 print("Список покупок после изменения: \(shoppingList)")
 print("--------------------------------------------")
+
+/// **№103. Авторизация пользователя**
+func checkAutorization(name: String, password: String) -> Bool {
+    guard name == "ivanIvanov" && password == "ivan2002" else {
+        print("DEBUG: Неправильный логин или пароль")
+        return false
+    }
+    
+    print("Пользователь успешно авторизирован. Отправляем запрос на сервер")
+    
+    defer {
+        print("Закрытие сетевого соединения")
+    }
+    
+    return true
+}
+
+let userName = "ivanIvanov"
+let userPassword = "ivan200"
+checkAutorization(name: userName, password: userPassword)
+print("--------------------------------------------")
