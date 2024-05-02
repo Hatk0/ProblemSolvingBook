@@ -1177,3 +1177,15 @@ if let result = splitString("Hello, World!") {
 """)
 }
 print("--------------------------------------------")
+
+/// **№89. Валидация e-mail адреса**
+func isValidEmail(_ email: String) -> Bool {
+    return email.contains("@") && email.contains(".") ? true : false
+}
+
+let firstEmail = "ivanIvanov@mail.ru"
+let secondEmail = "ivanIvanov@mailru"
+
+print(isValidEmail(firstEmail))
+print(isValidEmail(secondEmail))
+print("--------------------------------------------")
