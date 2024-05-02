@@ -1235,11 +1235,25 @@ print(calculateOrderCost(product, quantity: quanitity))
 print("--------------------------------------------")
 
 /// **№92. Стоимость поездки на машине**
-func calculateTripCost(_ fuelConsuption: Double, fuelPrice: Double, distance: Double) -> Double {
+func calculateTripCost(_ fuelConsuption: Double,
+                       fuelPrice: Double,
+                       distance: Double) -> Double {
     let fuelConsupted = (fuelConsuption / 100) * distance
     let totalCost = fuelConsupted * fuelPrice
     return totalCost
 }
 
 print(calculateTripCost(100, fuelPrice: 92, distance: 200))
+print("--------------------------------------------")
+
+/// **№93. Итоговая сумма по вкладу**
+func calculateInterest(initialAmount: Double,
+                       annualPercentage: Double,
+                       term: Int) -> Double {
+    let interestRate = annualPercentage / 100
+    let finalAmount = initialAmount * pow(1 + interestRate, Double(term))
+    return finalAmount
+}
+
+print(calculateInterest(initialAmount: 1_000_000, annualPercentage: 16, term: 2))
 print("--------------------------------------------")
