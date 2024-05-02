@@ -1222,3 +1222,14 @@ let productPrice = [
 
 print(calculateTotal(productPrice))
 print("--------------------------------------------")
+
+/// **№91. Расчет стоимости заказа**
+func calculateOrderCost(_ productPrice: Double, quantity: Int) -> Double {
+    return productPrice * Double(quantity)
+}
+
+let product = 80.56
+let quanitity = 15
+
+print(calculateOrderCost(product, quantity: quanitity))
+print("--------------------------------------------")
