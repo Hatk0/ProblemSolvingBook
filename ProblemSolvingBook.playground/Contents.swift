@@ -1485,3 +1485,31 @@ if let average = calculateAverage(10.0, 20.2, 30.5, 5.8, 2.0, 90.0, 123.52, 23.1
     print("Что-то пошло не так...")
 }
 print("--------------------------------------------")
+
+/// **🗺️. Навигация для яхты**
+func updateYachtLocation(x: inout Double,
+                         y: inout Double,
+                         speed: Double,
+                         windDirection: Double) {
+    let deltaX = speed * cos(windDirection)
+    let deltaY = speed * sin(windDirection)
+    
+    x += deltaX
+    y += deltaY
+}
+
+// Данные
+var coordinateX = 10.231331
+var coordinateY = 157.2140120313
+let yachtSpeed = 20
+let windDirection = Double.pi / 4
+
+updateYachtLocation(x: &coordinateX,
+                    y: &coordinateY,
+                    speed: Double(yachtSpeed),
+                    windDirection: windDirection)
+print("""
+Обновленные координаты нахождения яхты:
+По оси X: \(coordinateX)
+По оси Y: \(coordinateY)
+""")
