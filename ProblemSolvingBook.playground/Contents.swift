@@ -1340,3 +1340,11 @@ func generateRandomPassword(with passwordLength: Int) -> String {
 
 print("Сгенерированный пароль: \(generateRandomPassword(with: 20))")
 print("--------------------------------------------")
+
+/// **№98. Простое число**
+func isPrime(with number: Int) -> Bool {
+    return number > 1 && !(2..<number).contains { number % $0 == 0 }
+}
+
+print("Число простое? - \(isPrime(with: 2))")
+print("--------------------------------------------")
