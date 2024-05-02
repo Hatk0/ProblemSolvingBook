@@ -1348,3 +1348,22 @@ func isPrime(with number: Int) -> Bool {
 
 print("Число простое? - \(isPrime(with: 2))")
 print("--------------------------------------------")
+
+/// **№99. Наибольний общий показатель**
+func findHighestTotal(firstNumber: Int, secondNumber: Int) -> Int {
+    var firstNumber = firstNumber
+    var secondNumber = secondNumber
+    
+    while secondNumber != 0 {
+        let temp = secondNumber
+        secondNumber = firstNumber % secondNumber
+        firstNumber = temp
+    }
+    return abs(firstNumber)
+}
+
+let highestFirstNumber = 36
+let highestSecondNumber = 30
+let highestResult = findHighestTotal(firstNumber: highestFirstNumber, secondNumber: highestSecondNumber)
+print("Наибольший делитель чисел \(highestFirstNumber) и \(highestSecondNumber) равен \(highestResult)")
+print("--------------------------------------------")
