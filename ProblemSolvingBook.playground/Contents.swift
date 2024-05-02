@@ -1367,3 +1367,27 @@ let highestSecondNumber = 30
 let highestResult = findHighestTotal(firstNumber: highestFirstNumber, secondNumber: highestSecondNumber)
 print("Наибольший делитель чисел \(highestFirstNumber) и \(highestSecondNumber) равен \(highestResult)")
 print("--------------------------------------------")
+
+/// **№100. Количество ключевых слов 🍻**
+func analyzeText(_ text: String, keywords: [String]) -> [String: Int] {
+    var keywordCount = [String: Int]()
+    let words = text.components(separatedBy: .whitespacesAndNewlines)
+    
+    for keyword in keywords {
+        let count = words.filter { $0.lowercased() == keyword.lowercased() }.count
+        keywordCount[keyword] = count
+    }
+    
+    return keywordCount
+}
+
+let dummyText = "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections."
+
+let keywords = ["Gregor", "he", "domed"]
+let dummyResult = analyzeText(dummyText, keywords: keywords)
+
+print("Анализ текста на наличие ключевых слов:")
+for (key, value) in dummyResult {
+    print("Ключевое слово \(key): \(value) вхождений")
+}
+print("--------------------------------------------")
