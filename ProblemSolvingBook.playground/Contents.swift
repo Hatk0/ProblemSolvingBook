@@ -1430,7 +1430,7 @@ modifyShoppingList(&shoppingList, withItems: additionalItems)
 print("Список покупок после изменения: \(shoppingList)")
 print("--------------------------------------------")
 
-/// **№103. Авторизация пользователя**
+/// **№104. Авторизация пользователя**
 func checkAutorization(name: String, password: String) -> Bool {
     guard name == "ivanIvanov" && password == "ivan2002" else {
         print("DEBUG: Неправильный логин или пароль")
@@ -1449,4 +1449,23 @@ func checkAutorization(name: String, password: String) -> Bool {
 let userName = "ivanIvanov"
 let userPassword = "ivan200"
 checkAutorization(name: userName, password: userPassword)
+print("--------------------------------------------")
+
+/// **№105. Статистические данные по массиву**
+func calculateStatistics(_ numbers: [Int]) -> (average: Double,
+                                               min: Int,
+                                               max: Int,
+                                               count: Int)? {
+    guard !numbers.isEmpty else { return nil }
+    
+    let average = Double(numbers.reduce(0, +)) / Double(numbers.count)
+    let min = numbers.min()!
+    let max = numbers.max()!
+    let count = numbers.count
+
+    return (average, min, max, count)
+}
+
+let numbers = [10, 12, 6, 62, 21, 78, 90, 1]
+print(calculateStatistics(numbers) ?? [])
 print("--------------------------------------------")
