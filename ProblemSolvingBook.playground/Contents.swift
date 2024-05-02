@@ -1311,3 +1311,17 @@ for filteredClothesProduct in filteredClothesProducts {
     }
 }
 print("--------------------------------------------")
+
+/// **№96. Результат вычисления из строки**
+func calculateExpression(with numbers: String) -> Int {
+    let expression = NSExpression(format: numbers)
+    if let result = expression.expressionValue(with: nil, context: nil) as? Int {
+        print(result)
+    } else {
+        print("Ошибка")
+    }
+    return result
+}
+
+calculateExpression(with: "2 + 3")
+print("--------------------------------------------")
