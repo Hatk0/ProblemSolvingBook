@@ -1156,3 +1156,24 @@ if let result = convertToInt(string: "abc") {
     print("Не удалось преобразовать целое число")
 }
 print("--------------------------------------------")
+
+/// **№88. Деление строки**
+func splitString(_ input: String) -> (String, String)? {
+    let count = input.count
+    guard count > 0 else { return nil }
+    
+    let midIndex = input.index(input.startIndex, offsetBy: count / 2)
+    
+    let firstHalf = String(input[..<midIndex])
+    let secondHalf = String(input[midIndex...])
+    
+    return (firstHalf, secondHalf)
+}
+
+if let result = splitString("Hello, World!") {
+    print("""
+Первая часть: \(result.0)
+Вторая часть: \(result.1)
+""")
+}
+print("--------------------------------------------")
