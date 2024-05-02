@@ -1283,3 +1283,31 @@ if let convertedAmount = convertCurrency(sum: 100,
     print("Результат обмена: \(convertedAmount)")
 }
 print("--------------------------------------------")
+
+/// **№95. Фильтрация товаров**
+var productList: [[String: Any]] = [
+    ["название": "Футболка", "категория": "Одежда", "цена": 10],
+    ["название": "Шорты", "категория": "Одежда", "цена": 12],
+    ["название": "Джинсы", "категория": "Одежда", "цена": 22],
+    ["название": "Наушники", "категория": "Техника", "цена": 300],
+    ["название": "Кроссовки", "категория": "Обувь", "цена": 120],
+    ["название": "Мышка", "категория": "Техника", "цена": 83],
+    ["название": "Коврик для мыши", "категория": "Техника", "цена": 10],
+    ["название": "Книга по программированию", "категория": "Литература", "цена": 23]
+]
+
+func filterProducts(by category: String) -> [[String: Any]] {
+    let filteredProducts = productList.filter { $0["категория"] as? String == category }
+    return filteredProducts
+}
+
+let clothesCategory = "Одежда"
+let filteredClothesProducts = filterProducts(by: clothesCategory)
+print("Продукты категории: \(filteredClothesProducts)")
+for filteredClothesProduct in filteredClothesProducts {
+    if let name = filteredClothesProduct["название"] as? String,
+       let price = filteredClothesProduct["цена"] as? Double {
+        print("\(name): \(price)")
+    }
+}
+print("--------------------------------------------")
