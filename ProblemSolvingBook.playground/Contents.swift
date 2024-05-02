@@ -1391,3 +1391,16 @@ for (key, value) in dummyResult {
     print("Ключевое слово \(key): \(value) вхождений")
 }
 print("--------------------------------------------")
+
+/// **№101. Сортировка чисел по четности-нечетности**
+func sortNumbers(_ numbers: [Int]) -> [Int] {
+    let odds = numbers.filter { $0 % 2 != 0 }
+    let evens = numbers.filter { $0 % 2 == 0 }
+    
+    return odds + evens
+}
+
+let oddsBeforeEventsArray = [1,4,3,7,8,11,12,27,18]
+let sortNumbersResult = sortNumbers(oddsBeforeEventsArray)
+print(sortNumbersResult)
+print("--------------------------------------------")
