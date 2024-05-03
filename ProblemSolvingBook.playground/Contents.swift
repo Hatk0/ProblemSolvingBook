@@ -1587,3 +1587,22 @@ enum Months: Int {
 let month: Months = .may
 print("Месяц: \(month.rawValue)")
 print("--------------------------------------------")
+
+/// **№111. Регистрация на конференцию**
+enum TicketCategory: Int {
+    case standart = 1
+    case premium
+    case vip
+    case promo
+    case speaker
+}
+
+print("""
+Категории билетов:
+Стандартный билет: \(TicketCategory.standart.rawValue)
+Премиум билет: \(TicketCategory.premium.rawValue)
+VIP билет: \(TicketCategory.vip.rawValue)
+Билет по промокоду: \(TicketCategory.promo.rawValue)
+Билет для выступающего: \(TicketCategory.speaker.rawValue)
+""")
+print("--------------------------------------------")
