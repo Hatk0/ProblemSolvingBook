@@ -1791,3 +1791,38 @@ let temper = 25
 
 print(printForecastInfo(weatherCondition: weatherCondition, temperature: temper))
 print("--------------------------------------------")
+
+/// **№116. Услуги парикмахерской**
+enum HairService: String {
+    case hairCut = "Стрижка"
+    case hairWash = "Мытье головы"
+    case haircoloring = "Окрашивание волос"
+    case blowdry = "Сушка"
+    
+    var rawValue: Double {
+        switch self {
+        case .hairCut:
+            return 10.5
+        case .hairWash:
+            return 5.0
+        case .haircoloring:
+            return 39.99
+        case .blowdry:
+            return 1.5
+        }
+    }
+}
+
+func calculateTotalServiceCost(with services: [HairService]) -> Double {
+    var totalCost: Double = 0.0
+    for service in services {
+        totalCost += service.rawValue
+    }
+    
+    return totalCost
+}
+
+let selectedHairService: [HairService] = [.hairCut, .hairWash, .blowdry]
+let totalServiceCost = calculateTotalServiceCost(with: selectedHairService)
+print("Общая стоимость услуг составляет \(totalServiceCost)$")
+print("--------------------------------------------")
