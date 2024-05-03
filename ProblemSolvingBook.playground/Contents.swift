@@ -1515,7 +1515,6 @@ print("""
 """)
 print("--------------------------------------------")
 
-
 /// **№108. Типы кредитных карт**
 enum CreditCard: String {
     case mir
@@ -1548,4 +1547,34 @@ func printCreditCardInfo() {
 }
 
 printCreditCardInfo()
+print("--------------------------------------------")
+
+/// **№109. Игровые роли**
+enum Roles {
+    case warrior
+    case mage
+    case archer
+    
+    func description() -> String {
+        switch self {
+        case .warrior:
+            return "Воин: Высокое здоровье, сильные атаки в ближнем бою."
+        case .mage:
+            return "Маг: Высокая магическая сила, атаки на расстоянии."
+        case .archer:
+            return "Лучник: Высокая ловкость, точные атаки на расстоянии."
+        }
+    }
+}
+
+func printRolesInfo() {
+    print("""
+Игровые роли:
+\(Roles.warrior.description())
+\(Roles.mage.description())
+\(Roles.archer.description())
+""")
+}
+
+printRolesInfo()
 print("--------------------------------------------")
