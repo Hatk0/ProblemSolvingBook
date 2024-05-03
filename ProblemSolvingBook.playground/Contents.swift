@@ -1872,3 +1872,44 @@ let expression: MathExpression = .multiplication(.number(5), .number(5))
 let mathExpressionResult = evaluate(expression)
 print("Результат: \(mathExpressionResult)")
 print("--------------------------------------------")
+
+/// **№119. Выбор специализации**
+enum Specialization {
+    case softwareDevelopment
+    case designer
+    case marketing
+    case dataScience
+}
+
+func chooseSpecialization(interests: [String], skills: [String]) -> Specialization? {
+    if interests.contains("программирование") && skills.contains("системный дизайн") {
+        return .softwareDevelopment
+    } else if interests.contains("креативность") && skills.contains("графический дизайн") {
+        return .designer
+    } else if interests.contains("общение") && skills.contains("развитие социальных сетей") {
+        return .marketing
+    } else if interests.contains("анализ данных") && skills.contains("статистика") {
+        return .dataScience
+    } else {
+        return nil
+    }
+}
+
+let userInterests = ["программирование", "решение задач"]
+let userSkills = ["системный дизайн", "исправление ошибок", "программная архитектура"]
+
+if let recommendedSpecialization = chooseSpecialization(interests: userInterests, skills: userSkills) {
+    switch recommendedSpecialization {
+    case .softwareDevelopment:
+        print("Рекомендуется специализироваться в области Разработки программного обеспечения.")
+    case .designer:
+        print("Рекомендуется специализироваться в области Дизайна.")
+    case .marketing:
+        print("Рекомендуется специализироваться в области Маркетинга.")
+    case .dataScience:
+        print("Рекомендуется специализироваться в области Data Science.")
+    }
+} else {
+    print("К сожалению, не удалось подобрать специализацию на основе ваших интересов и навыков.")
+}
+print("--------------------------------------------")
