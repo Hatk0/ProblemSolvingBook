@@ -1848,3 +1848,27 @@ func chooseTransport(weather: String) -> Transport {
 let currentWeather = "Солнечно"
 let weatherConditionTransport = chooseTransport(weather: currentWeather)
 print("Рекомендуется использовать \(weatherConditionTransport) при такой погоде")
+print("--------------------------------------------")
+
+/// **№118. Рекурсивное перечисление**
+indirect enum MathExpression {
+    case number(Int)
+    case addition(MathExpression, MathExpression)
+    case multiplication(MathExpression, MathExpression)
+}
+
+func evaluate(_ mathExpression: MathExpression) -> Int {
+    switch mathExpression {
+    case .number(let value):
+        return value
+    case .addition(let left, let right):
+        return evaluate(left) + evaluate(right)
+    case .multiplication(let left, let right):
+        return evaluate(left) * evaluate(right)
+    }
+}
+
+let expression: MathExpression = .multiplication(.number(5), .number(5))
+let mathExpressionResult = evaluate(expression)
+print("Результат: \(mathExpressionResult)")
+print("--------------------------------------------")
