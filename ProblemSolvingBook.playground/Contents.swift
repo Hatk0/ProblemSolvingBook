@@ -1749,3 +1749,45 @@ order.append(.coffeeBlack)
 let totalCost = order.reduce(0.0) { $0 + $1.price }
 print("Итоговая стоимость заказа: \(totalCost)$")
 print("--------------------------------------------")
+
+/// **№115. Прогноз погоды**
+enum WeatherCondition {
+    case sunny
+    case cloudy
+    case rain
+    case snow
+}
+
+func printForecastInfo(weatherCondition: [WeatherCondition], temperature: Int) -> String {
+    var report = "Погода на сегодня: "
+    
+    if weatherCondition.isEmpty {
+        report += "безветренно"
+    } else {
+        var conditionDescription = [String]()
+        for condition in weatherCondition {
+            switch condition {
+            case .sunny:
+                conditionDescription.append("солнечно")
+            case .cloudy:
+                conditionDescription.append("облачно")
+            case .rain:
+                conditionDescription.append("идет дождь")
+            case .snow:
+                conditionDescription.append("идет снег")
+            }
+        }
+        
+        let conditionString = conditionDescription.joined(separator: ", ")
+        report += conditionString
+    }
+    
+    report += ", \(temperature) градусов цельсия"
+    return report
+}
+
+let weatherCondition: [WeatherCondition] = [.sunny, .cloudy, .rain]
+let temper = 25
+
+print(printForecastInfo(weatherCondition: weatherCondition, temperature: temper))
+print("--------------------------------------------")
