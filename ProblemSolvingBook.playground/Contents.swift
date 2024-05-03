@@ -1826,3 +1826,25 @@ let selectedHairService: [HairService] = [.hairCut, .hairWash, .blowdry]
 let totalServiceCost = calculateTotalServiceCost(with: selectedHairService)
 print("Общая стоимость услуг составляет \(totalServiceCost)$")
 print("--------------------------------------------")
+
+/// **№117. Выбор транспорта по погоде**
+enum Transport {
+    case car
+    case plane
+    case train
+}
+
+func chooseTransport(weather: String) -> Transport {
+    switch weather {
+    case "Солнечно":
+        return .car
+    case "Дождь", "Снег":
+        return .train
+    default:
+        return .plane
+    }
+}
+
+let currentWeather = "Солнечно"
+let weatherConditionTransport = chooseTransport(weather: currentWeather)
+print("Рекомендуется использовать \(weatherConditionTransport) при такой погоде")
