@@ -1578,3 +1578,12 @@ func printRolesInfo() {
 
 printRolesInfo()
 print("--------------------------------------------")
+
+/// **№110. Номер и название месяца**
+enum Months: Int {
+    case january = 1, february, march, april, may, june, july, august, september, october, november, december = 12
+}
+
+let month: Months = .may
+print("Месяц: \(month.rawValue)")
+print("--------------------------------------------")
