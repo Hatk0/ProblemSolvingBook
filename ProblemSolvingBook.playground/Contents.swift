@@ -1606,3 +1606,38 @@ VIP билет: \(TicketCategory.vip.rawValue)
 Билет для выступающего: \(TicketCategory.speaker.rawValue)
 """)
 print("--------------------------------------------")
+
+/// **№112. Конвертер валют 3**
+enum Currency: String {
+    case usd = "USD"
+    case eur = "EUR"
+    case rub = "RUB"
+    case jpy = "JPY"
+}
+
+let exchangeRates: [Currency: Double] = [
+    .usd: 1.0,
+    .eur: 0.85,
+    .rub: 97.52,
+    .jpy: 110.21
+]
+
+func convertExchangeRates(sum: Double,
+                          currencyType: Currency,
+                          currencySelection: Currency) -> Double? {
+    guard let fromRate = exchangeRates[currencyType],
+          let toRate = exchangeRates[currencyType] else {
+        return nil
+    }
+    
+    let convertedAmount = sum * fromRate / toRate
+    print("\(sum) \(currencyType) обменено на \(convertedAmount) \(fromRate / toRate)")
+    return convertedAmount
+}
+
+if let convertedAmount = convertExchangeRates(sum: 100,
+                                         currencyType: .usd,
+                                         currencySelection: .eur) {
+    print("Результат обмена: \(convertedAmount)")
+}
+print("--------------------------------------------")
