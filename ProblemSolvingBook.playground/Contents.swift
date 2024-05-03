@@ -1513,3 +1513,39 @@ print("""
 По оси X: \(coordinateX)
 По оси Y: \(coordinateY)
 """)
+print("--------------------------------------------")
+
+
+/// **№108. Типы кредитных карт**
+enum CreditCard: String {
+    case mir
+    case visa
+    case masterCard
+    case americanExpress
+    
+    func description() -> String {
+        switch self {
+        case .mir:
+            return "Карта Mir"
+        case .visa:
+            return "Карта Visa"
+        case .masterCard:
+            return "Карта MasterCard"
+        case .americanExpress:
+            return "Карта American Express"
+        }
+    }
+}
+
+func printCreditCardInfo() {
+    print("""
+Типы кредитных карт:
+\(CreditCard.mir.description())
+\(CreditCard.visa.description())
+\(CreditCard.masterCard.description())
+\(CreditCard.americanExpress.description())
+""")
+}
+
+printCreditCardInfo()
+print("--------------------------------------------")
