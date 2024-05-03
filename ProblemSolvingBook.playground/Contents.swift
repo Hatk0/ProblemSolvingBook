@@ -1686,3 +1686,66 @@ All species of life—including humans—evolved into their present-day forms ov
 let period: TimePeriod = .precambrianTime
 print(period.chooseTimePeriod())
 print("--------------------------------------------")
+
+/// **№114. Принять заказ в кафе**
+// Создание словаря с ценами
+var menuPrices: [String: Double] = [
+    "кофе без молока": 2.5,
+    "кофе с молоком": 3.0,
+    "чай без сахара": 2.0,
+    "чай с сахаром": 2.5,
+    "Cок": 2.0,
+    "вода без газа": 1.5,
+    "вода с газом": 1.5,
+    "сэндвич": 4.0,
+    "ветчина": 1.0,
+    "колбаса": 1.0,
+    "курица": 1.5,
+    "рыба": 2.0,
+    "капкейк": 2.0,
+    "яблочный пирог": 3.0
+]
+
+// Создание перечисления для представления меню
+enum MenuItem: String {
+    case coffeeBlack = "кофе без молока"
+    case coffeeWithMilk = "кофе с молоком"
+    case teaNoSugar = "чай без сахара"
+    case teaWithSugar = "чай с сахаром"
+    case cok = "Cок"
+    case waterNoGas = "вода без газа"
+    case waterWithGas = "вода с газом"
+    case sandwich = "сэндвич"
+    case ham = "ветчина"
+    case sausage = "колбаса"
+    case chicken = "курица"
+    case fish = "рыба"
+    case cupcake = "капкейк"
+    case applePie = "яблочный пирог"
+    
+    // Вычисляемое свойство для стоимости блюда
+    var price: Double {
+        let components = self.rawValue.components(separatedBy: " с ")
+        var basePrice = 0.0
+        if let baseItemPrice = menuPrices[components[0]] {
+            basePrice = baseItemPrice
+        }
+        let additionalPrice = components.dropFirst().reduce(0.0) { (result, ingredient) -> Double in
+            if let price = menuPrices[ingredient] {
+                return result + price
+            }
+            return result
+        }
+        return basePrice + additionalPrice
+    }
+}
+
+// Принятие заказа
+var order: [MenuItem] = []
+order.append(.applePie)
+order.append(.coffeeBlack)
+
+// Подсчет общей суммы заказа
+let totalCost = order.reduce(0.0) { $0 + $1.price }
+print("Итоговая стоимость заказа: \(totalCost)$")
+print("--------------------------------------------")
