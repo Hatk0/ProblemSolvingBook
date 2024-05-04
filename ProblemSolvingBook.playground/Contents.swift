@@ -2004,3 +2004,33 @@ let distanceInMeters = Unit.meter(value: 100)
 let distanceInKilograms = distanceInMeters.convert(to: .kilogram(value: 500))
 print("100 метров равно \(distanceInKilograms) килограммам")
 print("--------------------------------------------")
+
+/// **№122. Обработка заказов**
+enum OrderStatus {
+    case processing
+    case shipped
+    case delivered
+    case cancelled
+    
+    func sent() {
+        print("Заказ отправлен")
+    }
+    
+    func wait() {
+        print("Ваш заказ готов к выдаче!")
+    }
+}
+
+let currentOrderStatus: OrderStatus = .delivered
+
+switch currentOrderStatus {
+case .processing:
+    currentOrderStatus.sent()
+case .shipped:
+    currentOrderStatus.sent()
+case .delivered:
+    currentOrderStatus.wait()
+case .cancelled:
+    break
+}
+print("--------------------------------------------")
