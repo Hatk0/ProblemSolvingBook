@@ -1913,3 +1913,59 @@ if let recommendedSpecialization = chooseSpecialization(interests: userInterests
     print("К сожалению, не удалось подобрать специализацию на основе ваших интересов и навыков.")
 }
 print("--------------------------------------------")
+
+/// **№120. Выбор транспорта по расстоянию и бюджету**
+enum TransportType {
+    case car(speed: Double, costPerKm: Double)
+    case plane(speed: Double, costPerKm: Double)
+    case train(speed: Double, costPerKm: Double)
+    
+    func costPerKm() -> Double {
+        switch self {
+        case .car(_, let costPerKm):
+            return costPerKm
+        case .plane(_, let costPerKm):
+            return costPerKm
+        case .train(_, let costPerKm):
+            return costPerKm
+        }
+    }
+}
+
+func recommendTransport(distance: Double, budget: Double) -> String {
+    let car = TransportType.car(speed: 60, costPerKm: 0.1)
+    let plane = TransportType.plane(speed: 800, costPerKm: 0.2)
+    let train = TransportType.train(speed: 100, costPerKm: 0.05)
+    
+    // Вычисляем стоимость поездки для каждого типа транспорта
+    let carCost = distance * car.costPerKm()
+    let planeCost = distance * plane.costPerKm()
+    let trainCost = distance * train.costPerKm()
+    
+    // Проверяем, какие типы транспорта доступны в пределах бюджета
+    var availableTypes: [String] = []
+    if carCost <= budget {
+        availableTypes.append("Автомобиль")
+    }
+    if planeCost <= budget {
+        availableTypes.append("Самолет")
+    }
+    if trainCost <= budget {
+        availableTypes.append("Поезд")
+    }
+    
+    // Возвращаем рекомендацию
+    if availableTypes.isEmpty {
+        return "Недостаточно средств для любого типа транспорта"
+    } else {
+        let typesString = availableTypes.joined(separator: ", ")
+        return "Вам подойдут следующие типы транспорта: \(typesString)"
+    }
+}
+
+let distance = 100
+let budget = 5
+
+let recommendation = recommendTransport(distance: Double(distance), budget: Double(budget))
+print(recommendation)
+print("--------------------------------------------")
