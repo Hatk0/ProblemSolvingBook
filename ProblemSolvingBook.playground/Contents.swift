@@ -1969,3 +1969,38 @@ let budget = 5
 let recommendation = recommendTransport(distance: Double(distance), budget: Double(budget))
 print(recommendation)
 print("--------------------------------------------")
+
+/// **№121. Конвертер единиц измерения**
+enum Unit {
+    case meter(value: Double)
+    case kilogram(value: Double)
+    case celsius(value: Double)
+    
+    func convert(to targetUnit: Unit) -> Double {
+        switch (self, targetUnit) {
+        case (.meter(let value), .meter):
+            return value
+        case (.meter(let value), .kilogram):
+            return value * 1000
+        case (.meter(let value), .celsius):
+            return value * 100
+        case (.kilogram(let value), .meter):
+            return value / 1000
+        case (.kilogram(let value), .kilogram):
+            return value
+        case (.kilogram(let value), .celsius):
+            return value * 1000
+        case (.celsius(let value), .meter):
+            return value / 100
+        case (.celsius(let value), .kilogram):
+            return value / 1000
+        case (.celsius(let value), .celsius):
+            return value
+        }
+    }
+}
+
+let distanceInMeters = Unit.meter(value: 100)
+let distanceInKilograms = distanceInMeters.convert(to: .kilogram(value: 500))
+print("100 метров равно \(distanceInKilograms) килограммам")
+print("--------------------------------------------")
