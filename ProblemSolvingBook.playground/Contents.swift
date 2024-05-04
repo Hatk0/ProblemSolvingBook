@@ -2034,3 +2034,39 @@ case .cancelled:
     break
 }
 print("--------------------------------------------")
+
+/// **№123. Сравнение классов и структур**
+struct Location {
+    var latitude: Double
+    var longitude: Double
+}
+
+class LocationTracker {
+    var latitude: Double
+    var longitude: Double
+    
+    init(latitude: Double, longitude: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+}
+
+var locationStruct = Location(latitude: 1.232132131, longitude: 10.523512)
+var locationTrackerClass = LocationTracker(latitude: 2.14214141414, longitude: 12.45213)
+
+print("""
+Местоположение структуры: \(locationStruct.latitude), \(locationStruct.longitude)
+Местоположение класса: \(locationTrackerClass.latitude), \(locationTrackerClass.longitude)
+""")
+
+locationStruct.latitude = 165.8096
+locationStruct.longitude = -20.5452
+
+locationTrackerClass.latitude = 14.54531123131
+locationTrackerClass.longitude = -53.525241
+
+print("""
+Новое местоположение структуры: \(locationStruct.latitude), \(locationStruct.longitude)
+Новое местоположение класса: \(locationTrackerClass.latitude), \(locationTrackerClass.longitude)
+""")
+print("--------------------------------------------")
