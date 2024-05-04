@@ -2070,3 +2070,71 @@ print("""
 Новое местоположение класса: \(locationTrackerClass.latitude), \(locationTrackerClass.longitude)
 """)
 print("--------------------------------------------")
+
+/// **№124. Управление задачами пользователя**
+struct Task {
+    let title: String
+    let deadline: Date
+    let priority: Priority
+    
+    enum Priority: Comparable {
+        case critical
+        case highPriority
+        case neutral
+        case lowPriority
+        case unknown
+    }
+}
+
+var tasks = [
+    Task(title: "Вымыть посуду",
+         deadline: .now,
+         priority: .neutral),
+    Task(title: "Написать диплом",
+         deadline: Date(timeIntervalSinceNow: 43200),
+         priority: .critical),
+    Task(title: "Убраться в квартире",
+         deadline: Date(timeIntervalSinceNow: 10000),
+         priority: .highPriority)
+]
+
+func sortTasks(by criteria: String, ascending: Bool) -> [Task] {
+    var sortedTasks = tasks
+
+    switch criteria {
+    case "название":
+        sortedTasks.sort { task1, task2 in
+            if ascending {
+                return task1.title < task2.title
+            } else {
+                return task1.title > task2.title
+            }
+        }
+    case "дедлайн":
+        sortedTasks.sort { task1, task2 in
+            if ascending {
+                return task1.deadline < task2.deadline
+            } else {
+                return task1.deadline > task2.deadline
+            }
+        }
+    case "приоритет":
+        sortedTasks.sort { task1, task2 in
+            if ascending {
+                return task1.priority < task2.priority
+            } else {
+                return task1.priority > task2.priority
+            }
+        }
+    default:
+        print("Что-то пошло не так. Неверный критерий сортировки")
+    }
+
+    return sortedTasks
+}
+
+let sortedByDeadlineAscending = sortTasks(by: "дедлайн", ascending: true)
+for task in sortedByDeadlineAscending {
+    print(task.title)
+}
+print("--------------------------------------------")
