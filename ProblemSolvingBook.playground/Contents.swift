@@ -2138,3 +2138,77 @@ for task in sortedByDeadlineAscending {
     print(task.title)
 }
 print("--------------------------------------------")
+
+/// **№125. Учет личных финансов**
+typealias FinancialSummary = (income: Double, expense: Double, balance: Double)
+
+enum TransactionType {
+    case income
+    case expense
+}
+
+struct Transaction {
+    let amount: Double
+    let type: TransactionType
+    let date: Date
+}
+
+func calculateFinancialSummary(
+    transactions: [Transaction],
+    startDate: Date,
+    endDate: Date
+) -> FinancialSummary {
+    var totalIncome = Double()
+    var totalExpense = Double()
+
+    for transaction in transactions {
+        if transaction.date >= startDate && transaction.date <= endDate {
+            switch transaction.type {
+            case .income:
+                totalIncome += transaction.amount
+            case .expense:
+                totalExpense += transaction.amount
+            }
+        }
+    }
+
+    let balance = totalIncome - totalExpense
+    return (totalIncome, totalExpense, balance)
+}
+
+let dateFormatter = DateFormatter()
+dateFormatter.dateFormat = "yyyy/MM/dd"
+
+let transactions = [
+    Transaction(
+        amount: 1000,
+        type: .income,
+        date: dateFormatter.date(from: "2024/12/01") ?? Date()
+    ),
+    Transaction(
+        amount: 500,
+        type: .expense,
+        date: dateFormatter.date(from: "2024/12/05") ?? Date()
+    ),
+    Transaction(
+        amount: 200,
+        type: .expense,
+        date: dateFormatter.date(from: "2024/12/10") ?? Date()
+    ),
+    Transaction(
+        amount: 1500,
+        type: .income,
+        date: dateFormatter.date(from: "2024/11/20") ?? Date()
+    )
+]
+
+let startDate = dateFormatter.date(from: "2024/12/01") ?? Date()
+let endDate = dateFormatter.date(from: "2024/12/31") ?? Date()
+
+let summary = calculateFinancialSummary(transactions: transactions, startDate: startDate, endDate: endDate)
+print("""
+Доходы: \(summary.income)
+Расходы: \(summary.expense)
+Баланс: \(summary.balance)
+""")
+print("--------------------------------------------")
