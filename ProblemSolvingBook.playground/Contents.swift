@@ -2212,3 +2212,82 @@ print("""
 Баланс: \(summary.balance)
 """)
 print("--------------------------------------------")
+
+/// **№126. Продажа автомобилей**
+struct Car {
+    let year: Int
+    let manufacturer: String
+    let model: String
+    let price: Double
+}
+
+extension Car {
+    static var cars: [Car] = [
+        Car(
+            year: 2023,
+            manufacturer: "Toyota",
+            model: "Camry",
+            price: 30000
+        ),
+        Car(
+            year: 2020,
+            manufacturer: "BMW",
+            model: "3 Series",
+            price: 45000
+        ),
+        Car(
+            year: 2021,
+            manufacturer: "Honda",
+            model: "Civic",
+            price: 25000
+        ),
+        Car(
+            year: 2022,
+            manufacturer: "Mercedes-Benz",
+            model: "C-Class",
+            price: 50000
+        ),
+        Car(
+            year: 2019,
+            manufacturer: "Ford",
+            model: "Focus",
+            price: 20000
+        )
+    ]
+}
+
+print("Автомобили от самых новых к самым старым:")
+let sortedByYear = Car.cars.sorted(by: { $0.year > $1.year })
+for car in sortedByYear {
+    print("\(car.year) \(car.manufacturer) \(car.model) - $\(car.price)")
+}
+print("\n")
+
+print("Автомобили от самой низкой к самой высокой цене:")
+let sortedByPrice = Car.cars.sorted(by: { $0.price < $1.price })
+for car in sortedByPrice {
+    print("\(car.year) \(car.manufacturer) \(car.model) - $\(car.price)")
+}
+print("\n")
+
+func filterCars(byManufacturer manufacturer: String, in cars: [Car]) -> [Car] {
+    return cars.filter { $0.manufacturer == manufacturer }
+}
+
+let filteredCars = filterCars(byManufacturer: "Toyota", in: Car.cars)
+print("Автомобили производителя Toyota:")
+for car in filteredCars {
+    print("\(car.year) \(car.manufacturer) \(car.model) - $\(car.price)")
+}
+print("\n")
+
+if let soldCarIndex = Car.cars.firstIndex(where: { $0.manufacturer == "Honda" && $0.model == "Civic" }) {
+    Car.cars.remove(at: soldCarIndex)
+    print("Автомобиль Honda Civic продан. Оставшиеся автомобили:")
+    for car in Car.cars {
+        print("\(car.year) \(car.manufacturer) \(car.model) - $\(car.price)")
+    }
+} else {
+    print("Автомобиль Honda Civic не найден в списке.")
+}
+print("--------------------------------------------")
