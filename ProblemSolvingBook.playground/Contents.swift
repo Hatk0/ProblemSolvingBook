@@ -2401,3 +2401,50 @@ let futureValue = calculateInvestmentValue(myInvestment, years: years)
 
 print("\nСумма инвестиций через \(years) лет при годовой ставке \(myInvestment.interestRate)% составит: \(String(format: "%.2f", futureValue))")
 print("--------------------------------------------")
+
+/// **№130. Фестиваль фруктов**
+struct Fruit {
+    let name: String
+    let weight: Int
+}
+
+extension Fruit {
+    static let fruits: [Fruit] = [
+        Fruit(name: "Яблоко", weight: 150),
+        Fruit(name: "Апельсин", weight: 250),
+        Fruit(name: "Арбуз", weight: 3000),
+        Fruit(name: "Банан", weight: 180),
+        Fruit(name: "Персик", weight: 220),
+        Fruit(name: "Киви", weight: 80)
+    ]
+}
+
+func categorizeFruits(_ fruits: [Fruit]) -> [String: [Fruit]] {
+    var categories: [String: [Fruit]] = [
+        "Легкие": [],
+        "Средние": [],
+        "Тяжелые": []
+    ]
+
+    for fruit in fruits {
+        switch fruit.weight {
+        case 0..<200:
+            categories["Легкие", default: []].append(fruit)
+        case 200..<500:
+            categories["Средние", default: []].append(fruit)
+        default:
+            categories["Тяжелые", default: []].append(fruit)
+        }
+    }
+
+    return categories
+}
+
+let categorizedFruits = categorizeFruits(Fruit.fruits)
+for (category, fruits) in categorizedFruits {
+    print("\n\(category):")
+    for fruit in fruits {
+        print("  - \(fruit.name), \(fruit.weight) г")
+    }
+}
+print("--------------------------------------------")
