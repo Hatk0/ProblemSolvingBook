@@ -2448,3 +2448,55 @@ for (category, fruits) in categorizedFruits {
     }
 }
 print("--------------------------------------------")
+
+/// **№131. Учет посетителей в кафе**
+class CafeManager {
+
+    private var visitors: [String: [String]] = [:]
+
+    func addVisitor(name: String, order: [String]) {
+        if var existingOrder = visitors[name] {
+            existingOrder.append(contentsOf: order)
+        } else {
+            visitors[name] = order
+        }
+    }
+
+    func getOrder(for name: String) -> [String]? {
+        return visitors[name]
+    }
+
+    func getMostPopularDishes() -> [String] {
+        var dishFrequency: [String: Int] = [:]
+
+        for orders in visitors.values {
+            for dish in orders {
+                dishFrequency[dish, default: 0] += 1
+            }
+        }
+
+        let maxFrequency = dishFrequency.values.max() ?? 0
+        let mostPopularDishes = dishFrequency.filter { $0.value == maxFrequency }.map { $0.key }
+
+        return mostPopularDishes
+    }
+
+    func displayVisitors() {
+        print("\nVisitors:")
+        visitors.forEach { print("  - \($0.key): \($0.value)") }
+    }
+}
+
+let cafeManager = CafeManager()
+
+cafeManager.addVisitor(name: "Алиса", order: ["Капучино", "Круассан"])
+cafeManager.addVisitor(name: "Боб", order: ["Эспрессо", "Круассан"])
+cafeManager.addVisitor(name: "Элис", order: ["Латте"])
+cafeManager.addVisitor(name: "Чарли", order: ["Эспрессо", "Капучино"])
+
+cafeManager.displayVisitors()
+
+print("\nЗаказ Алисы: \(cafeManager.getOrder(for: "Алиса") ?? [])")
+print("\nЗаказ Боба: \(cafeManager.getOrder(for: "Боб") ?? [])")
+print("\nПопулярные блюда/напитки: \(cafeManager.getMostPopularDishes())")
+print("--------------------------------------------")
