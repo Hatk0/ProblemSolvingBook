@@ -669,7 +669,7 @@ var videos = [String]()
 
 for file in mediaFiles {
     let fileExtension = (file as NSString).pathExtension.lowercased()
-    
+
     switch fileExtension {
     case "jpeg", "png":
         photos.append(file)
@@ -744,13 +744,13 @@ print("--------------------------------------------")
 /// **№66. Общие буквы**
 func findCommonLetters(firstWord: String, secondWord: String) -> String {
     var commonLetters = ""
-    
+
     for letter in firstWord {
         if secondWord.contains(letter) && !commonLetters.contains(letter) {
             commonLetters.append(letter)
         }
     }
-    
+
     return commonLetters
 }
 
@@ -785,7 +785,7 @@ func countUniqueLettersInText(in text: String) -> Int {
     for character in uniqueCharacters {
         uniqueCharacters.insert(character)
     }
-    
+
     return uniqueCharacters.count
 }
 
@@ -910,7 +910,7 @@ while batteryLevel > 0 {
     print("Текущее состояние баттареи: \(batteryLevel)")
     distanceTravelled += 20
     print("Пройденное расстояние: \(distanceTravelled)")
-    
+
     if batteryLevel == 0 {
         print("Энергия закончилась, путешествие подошло к концу ;(")
     }
@@ -922,14 +922,14 @@ let range = 2..<100
 
 for number in range {
     var isPrime = true
-    
+
     for i in 2..<number {
         if number % 1 == 0 {
             isPrime = false
             break
         }
     }
-     
+
     if isPrime {
         print("Первое простое число в диапазоне: \(number)")
         break
@@ -947,13 +947,13 @@ let possibleAnswers = Array(1...100) // Все числа от 1 до 100 как
 repeat {
     let randomIndex = Int.random(in: 0..<possibleAnswers.count)
     let guess = possibleAnswers[randomIndex]
-    
+
     print("Угадайте число от 1 до 100:")
     guard (1...100).contains(guess) else {
         print("Введите корректное число от 1 до 100!")
         continue
     }
-    
+
     // Проверяем, угадал ли пользователь число
     if guess == randomNumberRange {
         print("Поздравляем! Вы угадали число \(randomNumberRange)!")
@@ -984,7 +984,7 @@ for pupil in pupils {
     let writtenScore = pupil.writtenScore
     let oralScore = pupil.oralScore
     var grade = ""
-    
+
     switch (writtenScore, oralScore) {
     case let (x, y) where x > 80 && y > 60:
         grade = "Отлично"
@@ -995,7 +995,7 @@ for pupil in pupils {
     default:
         break
     }
-    
+
     print("Ученик \(pupil.name): \(grade)")
 }
 print("--------------------------------------------")
@@ -1055,18 +1055,18 @@ print("--------------------------------------------")
 /// **№81. Строка или подстрока**
 func findOccurrences(in string: String, of substring: String) -> [Int] {
     var occurrences: [Int] = []
-    
+
     for (index, _) in string.enumerated() {
         let startIndex = string.index(string.startIndex, offsetBy: index)
         let endIndex = string.index(startIndex,
                                     offsetBy: substring.count,
                                     limitedBy: string.endIndex) ?? string.endIndex
-        
+
         if string[startIndex..<endIndex] == substring {
             occurrences.append(index)
         }
     }
-    
+
     return occurrences
 }
 
@@ -1108,7 +1108,7 @@ func ageVerification(age personAge: Int?) -> String {
     guard let age = personAge else {
         return "Укажите возраст"
     }
-    
+
     switch age {
     case 0...120:
         return "Возраст допустим"
@@ -1125,7 +1125,7 @@ print("--------------------------------------------")
 /// **№86. Factorial**
 func factorial(_ number: Int) -> Int {
     guard number != 0 else { return 1 }
-    
+
     return (1...number).reduce(1, { $0 * $1 })
 }
 
@@ -1161,12 +1161,12 @@ print("--------------------------------------------")
 func splitString(_ input: String) -> (String, String)? {
     let count = input.count
     guard count > 0 else { return nil }
-    
+
     let midIndex = input.index(input.startIndex, offsetBy: count / 2)
-    
+
     let firstHalf = String(input[..<midIndex])
     let secondHalf = String(input[midIndex...])
-    
+
     return (firstHalf, secondHalf)
 }
 
@@ -1193,7 +1193,7 @@ print("--------------------------------------------")
 /// **№90. Общая стоимость покупок**
 func calculateTotal(_ productPrice: [Double]) -> Double {
     let totalCost = productPrice.reduce(0, +)
-    
+
     return totalCost
 }
 
@@ -1271,7 +1271,7 @@ func convertCurrency(sum: Double, currencyType: String, currencySelection: Strin
           let toRate = converterDictionary[currencySelection] else {
         return nil
     }
-    
+
     let convertedAmount = sum * fromRate / toRate
     print("\(sum) \(currencyType.lowercased()) обменено на \(convertedAmount) \(fromRate / toRate)")
     return convertedAmount
@@ -1330,11 +1330,11 @@ print("--------------------------------------------")
 func generateRandomPassword(with passwordLength: Int) -> String {
     let passwordLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     var passWord = ""
-    
+
     for _ in 0..<passwordLength {
         passWord.append(passwordLetters.randomElement()!)
     }
-    
+
     return passWord
 }
 
@@ -1353,7 +1353,7 @@ print("--------------------------------------------")
 func findHighestTotal(firstNumber: Int, secondNumber: Int) -> Int {
     var firstNumber = firstNumber
     var secondNumber = secondNumber
-    
+
     while secondNumber != 0 {
         let temp = secondNumber
         secondNumber = firstNumber % secondNumber
@@ -1372,12 +1372,12 @@ print("--------------------------------------------")
 func analyzeText(_ text: String, keywords: [String]) -> [String: Int] {
     var keywordCount = [String: Int]()
     let words = text.components(separatedBy: .whitespacesAndNewlines)
-    
+
     for keyword in keywords {
         let count = words.filter { $0.lowercased() == keyword.lowercased() }.count
         keywordCount[keyword] = count
     }
-    
+
     return keywordCount
 }
 
@@ -1396,7 +1396,7 @@ print("--------------------------------------------")
 func sortNumbers(_ numbers: [Int]) -> [Int] {
     let odds = numbers.filter { $0 % 2 != 0 }
     let evens = numbers.filter { $0 % 2 == 0 }
-    
+
     return odds + evens
 }
 
@@ -1436,13 +1436,13 @@ func checkAutorization(name: String, password: String) -> Bool {
         print("DEBUG: Неправильный логин или пароль")
         return false
     }
-    
+
     print("Пользователь успешно авторизирован. Отправляем запрос на сервер")
-    
+
     defer {
         print("Закрытие сетевого соединения")
     }
-    
+
     return true
 }
 
@@ -1457,7 +1457,7 @@ func calculateStatistics(_ numbers: [Int]) -> (average: Double,
                                                max: Int,
                                                count: Int)? {
     guard !numbers.isEmpty else { return nil }
-    
+
     let average = Double(numbers.reduce(0, +)) / Double(numbers.count)
     let min = numbers.min()!
     let max = numbers.max()!
@@ -1473,7 +1473,7 @@ print("--------------------------------------------")
 /// **№106. Произвольное количество параметров функции**
 func calculateAverage(_ numbers: Double...) -> Double? {
     guard !numbers.isEmpty else { return nil }
-    
+
     let sum = numbers.reduce(0, +)
     let average = sum / Double(numbers.count)
     return average
@@ -1493,7 +1493,7 @@ func updateYachtLocation(x: inout Double,
                          windDirection: Double) {
     let deltaX = speed * cos(windDirection)
     let deltaY = speed * sin(windDirection)
-    
+
     x += deltaX
     y += deltaY
 }
@@ -1521,7 +1521,7 @@ enum CreditCard: String {
     case visa
     case masterCard
     case americanExpress
-    
+
     func description() -> String {
         switch self {
         case .mir:
@@ -1554,7 +1554,7 @@ enum Roles {
     case warrior
     case mage
     case archer
-    
+
     func description() -> String {
         switch self {
         case .warrior:
@@ -1629,15 +1629,15 @@ func convertExchangeRates(sum: Double,
           let toRate = exchangeRates[currencyType] else {
         return nil
     }
-    
+
     let convertedAmount = sum * fromRate / toRate
     print("\(sum) \(currencyType) обменено на \(convertedAmount) \(fromRate / toRate)")
     return convertedAmount
 }
 
 if let convertedAmount = convertExchangeRates(sum: 100,
-                                         currencyType: .usd,
-                                         currencySelection: .eur) {
+                                              currencyType: .usd,
+                                              currencySelection: .eur) {
     print("Результат обмена: \(convertedAmount)")
 }
 print("--------------------------------------------")
@@ -1648,7 +1648,7 @@ enum TimePeriod {
     case paleozoicEra
     case mesozoicEra
     case cenozoicEra
-    
+
     func chooseTimePeriod() -> String {
         switch self {
         case .precambrianTime:
@@ -1722,7 +1722,7 @@ enum MenuItem: String {
     case fish = "рыба"
     case cupcake = "капкейк"
     case applePie = "яблочный пирог"
-    
+
     // Вычисляемое свойство для стоимости блюда
     var price: Double {
         let components = self.rawValue.components(separatedBy: " с ")
@@ -1760,7 +1760,7 @@ enum WeatherCondition {
 
 func printForecastInfo(weatherCondition: [WeatherCondition], temperature: Int) -> String {
     var report = "Погода на сегодня: "
-    
+
     if weatherCondition.isEmpty {
         report += "безветренно"
     } else {
@@ -1777,11 +1777,11 @@ func printForecastInfo(weatherCondition: [WeatherCondition], temperature: Int) -
                 conditionDescription.append("идет снег")
             }
         }
-        
+
         let conditionString = conditionDescription.joined(separator: ", ")
         report += conditionString
     }
-    
+
     report += ", \(temperature) градусов цельсия"
     return report
 }
@@ -1798,7 +1798,7 @@ enum HairService: String {
     case hairWash = "Мытье головы"
     case haircoloring = "Окрашивание волос"
     case blowdry = "Сушка"
-    
+
     var rawValue: Double {
         switch self {
         case .hairCut:
@@ -1818,7 +1818,7 @@ func calculateTotalServiceCost(with services: [HairService]) -> Double {
     for service in services {
         totalCost += service.rawValue
     }
-    
+
     return totalCost
 }
 
@@ -1919,7 +1919,7 @@ enum TransportType {
     case car(speed: Double, costPerKm: Double)
     case plane(speed: Double, costPerKm: Double)
     case train(speed: Double, costPerKm: Double)
-    
+
     func costPerKm() -> Double {
         switch self {
         case .car(_, let costPerKm):
@@ -1936,12 +1936,12 @@ func recommendTransport(distance: Double, budget: Double) -> String {
     let car = TransportType.car(speed: 60, costPerKm: 0.1)
     let plane = TransportType.plane(speed: 800, costPerKm: 0.2)
     let train = TransportType.train(speed: 100, costPerKm: 0.05)
-    
+
     // Вычисляем стоимость поездки для каждого типа транспорта
     let carCost = distance * car.costPerKm()
     let planeCost = distance * plane.costPerKm()
     let trainCost = distance * train.costPerKm()
-    
+
     // Проверяем, какие типы транспорта доступны в пределах бюджета
     var availableTypes: [String] = []
     if carCost <= budget {
@@ -1953,7 +1953,7 @@ func recommendTransport(distance: Double, budget: Double) -> String {
     if trainCost <= budget {
         availableTypes.append("Поезд")
     }
-    
+
     // Возвращаем рекомендацию
     if availableTypes.isEmpty {
         return "Недостаточно средств для любого типа транспорта"
@@ -1975,7 +1975,7 @@ enum Unit {
     case meter(value: Double)
     case kilogram(value: Double)
     case celsius(value: Double)
-    
+
     func convert(to targetUnit: Unit) -> Double {
         switch (self, targetUnit) {
         case (.meter(let value), .meter):
@@ -2011,11 +2011,11 @@ enum OrderStatus {
     case shipped
     case delivered
     case cancelled
-    
+
     func sent() {
         print("Заказ отправлен")
     }
-    
+
     func wait() {
         print("Ваш заказ готов к выдаче!")
     }
@@ -2044,7 +2044,7 @@ struct Location {
 class LocationTracker {
     var latitude: Double
     var longitude: Double
-    
+
     init(latitude: Double, longitude: Double) {
         self.latitude = latitude
         self.longitude = longitude
@@ -2076,7 +2076,7 @@ struct Task {
     let title: String
     let deadline: Date
     let priority: Priority
-    
+
     enum Priority: Comparable {
         case critical
         case highPriority
@@ -2342,4 +2342,44 @@ cancelBooking(&seatToBook)
 
 print("\nПопытка повторной отмены бронирования:")
 cancelBooking(&seatToBook)
+print("--------------------------------------------")
+
+/// **№128. Онлайн тестирование**
+struct Question {
+    let text: String
+    let answer: String
+}
+
+extension Question {
+    static let questions: [Question] = [
+        Question(text: "Какой цвет у неба?", answer: "Синий"),
+        Question(text: "Сколько ног у паука?", answer: "8"),
+        Question(text: "Как называется столица Франции?", answer: "Париж"),
+        Question(text: "Какой год следует за 1999?", answer: "2000")
+    ]
+
+    static let userAnswers = ["синий", "8", "Лондон", "2000"]
+}
+
+func checkAnswers(_ questions: [Question], _ userAnswers: [String]) -> Int {
+    guard questions.count == userAnswers.count else { return 0 }
+
+    var score = 0
+
+    for (index, question) in questions.enumerated() {
+        let userAnswer = userAnswers[index]
+
+        if userAnswer.lowercased() == question.answer.lowercased() {
+            score += 1
+            print("Вопрос: \(question.text) - Верно! ✅")
+        } else {
+            print("Вопрос: \(question.text) - Неверно ❌. Правильный ответ: \(question.answer)")
+        }
+    }
+
+    return score
+}
+
+let userScore = checkAnswers(Question.questions, Question.userAnswers)
+print("\nВаш результат: \(userScore) из \(Question.questions.count)")
 print("--------------------------------------------")
