@@ -2383,3 +2383,21 @@ func checkAnswers(_ questions: [Question], _ userAnswers: [String]) -> Int {
 let userScore = checkAnswers(Question.questions, Question.userAnswers)
 print("\nВаш результат: \(userScore) из \(Question.questions.count)")
 print("--------------------------------------------")
+
+/// **№129. Инвестиции 2**
+struct Investment {
+    let amount: Double
+    let interestRate: Double
+}
+
+func calculateInvestmentValue(_ investment: Investment, years: Int) -> Double {
+    let finalAmount = investment.amount * pow(1 + investment.interestRate / 100, Double(years))
+    return finalAmount
+}
+
+let myInvestment = Investment(amount: 10000, interestRate: 10)
+let years = 10
+let futureValue = calculateInvestmentValue(myInvestment, years: years)
+
+print("\nСумма инвестиций через \(years) лет при годовой ставке \(myInvestment.interestRate)% составит: \(String(format: "%.2f", futureValue))")
+print("--------------------------------------------")
