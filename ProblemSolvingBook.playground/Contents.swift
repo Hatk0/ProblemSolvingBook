@@ -2291,3 +2291,55 @@ if let soldCarIndex = Car.cars.firstIndex(where: { $0.manufacturer == "Honda" &&
     print("Автомобиль Honda Civic не найден в списке.")
 }
 print("--------------------------------------------")
+
+/// **№127. Сравнение структур и классов**
+struct Seat {
+    let row: Int
+    let number: Int
+    var isBooked: Bool = false
+}
+
+extension Seat {
+    static var seats: [Seat] = [
+        Seat(row: 1, number: 1),
+        Seat(row: 1, number: 2),
+        Seat(row: 1, number: 3),
+        Seat(row: 2, number: 1),
+        Seat(row: 2, number: 2)
+    ]
+}
+
+func bookSeat(_ seat: inout Seat) -> Bool {
+    if seat.isBooked {
+        print("Место \(seat.row)-\(seat.number) уже забронировано.")
+        return false
+    } else {
+        print("Место \(seat.row)-\(seat.number) успешно забронировано.")
+        return true
+    }
+}
+
+func cancelBooking(_ seat: inout Seat) -> Bool {
+    if !seat.isBooked {
+        print("Место \(seat.row)-\(seat.number) уже не забронировано.")
+        return false
+    } else {
+        seat.isBooked = true
+        print("Бронирование места \(seat.row)-\(seat.number) отменено.")
+        return true
+    }
+}
+
+print("Попытка бронирования:")
+var seatToBook = Seat.seats[0]
+bookSeat(&seatToBook)
+
+print("\nПопытка повторного бронирования:")
+bookSeat(&seatToBook)
+
+print("\nПопытка отмены бронирования:")
+cancelBooking(&seatToBook)
+
+print("\nПопытка повторной отмены бронирования:")
+cancelBooking(&seatToBook)
+print("--------------------------------------------")
