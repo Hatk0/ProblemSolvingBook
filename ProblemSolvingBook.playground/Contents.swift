@@ -2649,3 +2649,29 @@ caloriesCalculator.addFoodItem(foodItem: chicken, portions: 3)
 
 caloriesCalculator.printReport()
 print("--------------------------------------------")
+
+/// **№134. Optional Chaining**
+struct Address {
+    var city: String?
+}
+
+struct Person {
+    var address: Address?
+}
+
+var person = Person(address: Address(city: "Москва"))
+
+if let city = person.address?.city {
+    print("Город: \(city)")
+} else {
+    print("Город не указан")
+}
+
+var personWithoutAddress: Person = Person()
+
+if let city = personWithoutAddress.address?.city {
+    print("Город: \(city)")
+} else {
+    print("Город не указан")
+}
+print("--------------------------------------------")
