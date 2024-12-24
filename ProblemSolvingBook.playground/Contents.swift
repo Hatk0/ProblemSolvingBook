@@ -3115,3 +3115,48 @@ book1.isAvailable = true
 
 print("Книга \(book1.title) \(book1.isAvailable ? "доступна" : "недоступна")")
 print("-----------------------------------")
+
+/// **№146. Аквариум с рыбками**
+class Fish {
+
+    var name: String
+    var color: String
+
+    init(name: String, color: String) {
+        self.name = name
+        self.color = color
+    }
+}
+
+class Aquarium {
+
+    var name: String
+    var fishes: [Fish] = []
+
+    static var totalFishCount = Int()
+
+    init(name: String) {
+        self.name = name
+    }
+
+    func addFish(_ fish: Fish) {
+        fishes.append(fish)
+        Aquarium.totalFishCount += 1
+    }
+
+    static func getTotalFishCount() -> Int { totalFishCount }
+}
+
+let firstFish = Fish(name: "Золотая", color: "Золотая")
+let secondFish = Fish(name: "Пузырьки", color: "Синий")
+let thirdFish = Fish(name: "Грызун", color: "Зеленый")
+
+let firstAquarium = Aquarium(name: "Первый аквариум")
+firstAquarium.addFish(firstFish)
+firstAquarium.addFish(secondFish)
+
+let secondAquarium = Aquarium(name: "Второй аквариум")
+secondAquarium.addFish(thirdFish)
+
+print("Всего рыбок в аквариумах: \(Aquarium.getTotalFishCount())")
+print("-----------------------------------")
