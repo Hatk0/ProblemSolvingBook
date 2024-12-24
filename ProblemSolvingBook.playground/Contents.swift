@@ -3040,3 +3040,44 @@ let backupSystem = BackupSystem(backupInProgress: false)
 backupSystem.startBackup()
 backupSystem.finishBackup()
 print("-----------------------------------")
+
+/// **№144. Название задачи не менее 3-х символов**
+@propertyWrapper
+struct ValidTitle {
+    private var title = String()
+
+    var wrappedValue: String {
+        get { title }
+        set {
+            if newValue.count >= 3 {
+                title = newValue
+            } else {
+                print("Ошибка: название задачи должно быть не менее 3-х символов")
+            }
+        }
+    }
+}
+
+class TaskItem {
+
+    @ValidTitle var title: String
+    var description: String?
+
+    init(title: String, description: String? = nil) {
+        self.title = title
+        self.description = description
+    }
+}
+
+var task1 = TaskItem(title: "Task 1", description: "First task description")
+var task2 = TaskItem(title: "Do", description: "Second task description")
+
+print("Задача 1: \(task1.title), описание: \(task1.description ?? "Нет описания")")
+print("Задача 2: \(task2.title), описание: \(task2.description ?? "Нет описания")")
+
+task1.title = "T"
+task2.title = "Valid Task"
+
+print("Задача 1 после изменения: \(task1.title), описание: \(task1.description ?? "Нет описания")")
+print("Задача 2 после изменения: \(task2.title), описание: \(task2.description ?? "Нет описания")")
+print("-----------------------------------")
