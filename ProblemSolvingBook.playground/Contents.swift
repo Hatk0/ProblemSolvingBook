@@ -2961,3 +2961,23 @@ class Profile {
 var profile = Profile(name: "Джон")
 profile.loadAvatar()
 print("-----------------------------------")
+
+/// **№141. Мониторинг температуры**
+class TemperatureSensor {
+
+    var currentTemperature: Int {
+        didSet {
+            let temperatureChange = currentTemperature - oldValue
+            print("Температура изменилась на \(temperatureChange) градусов.")
+        }
+    }
+
+    init(currentTemperature: Int) {
+        self.currentTemperature = currentTemperature
+    }
+}
+
+let temperatureSensor = TemperatureSensor(currentTemperature: -12)
+temperatureSensor.currentTemperature = -5
+temperatureSensor.currentTemperature = 6
+print("-----------------------------------")
