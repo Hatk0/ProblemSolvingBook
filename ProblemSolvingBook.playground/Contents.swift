@@ -2883,3 +2883,25 @@ print("""
 Длина окружности круга: \(circle.circumference)
 """)
 print("-----------------------------------")
+
+/// **№138. Конвертация температур**
+struct TemperatureConventer {
+    var celcius: Double
+    var fahrenheit: Double
+
+    var celsiusToFahrenheit: Double {
+        return (celcius * 9/5) + 32
+    }
+
+    var fahrenheitToCelsius: Double {
+        return (fahrenheit - 32) * 5/9
+    }
+}
+
+let temperatureConverter = TemperatureConventer(celcius: 25, fahrenheit: 78)
+
+print("""
+Температура из градусов Цельсия в градусы Фаренгейта: \(temperatureConverter.celsiusToFahrenheit)
+Температуа из градусов Фаренгейта в градусы Цельсия: \(temperatureConverter.fahrenheitToCelsius)
+""")
+print("-----------------------------------")
