@@ -242,16 +242,16 @@ print("""
 print("--------------------------------------------")
 
 /// **№25. Программа для кассового аппарата в продуктовом магазине**
-struct Product {
+struct Products {
     let name: String
     let price: Int
     let quantity: Int
 }
 
-let products: [Product] = [
-    Product(name: "Молоко", price: 100, quantity: 10),
-    Product(name: "Яйца", price: 270, quantity: 15),
-    Product(name: "Ълеб", price: 85, quantity: 8)
+let products: [Products] = [
+    Products(name: "Молоко", price: 100, quantity: 10),
+    Products(name: "Яйца", price: 270, quantity: 15),
+    Products(name: "Хлеб", price: 85, quantity: 8)
 ]
 
 var totalSum = 0
@@ -2675,3 +2675,81 @@ if let city = personWithoutAddress.address?.city {
     print("Город не указан")
 }
 print("--------------------------------------------")
+
+/// **№135. Учет поставок овощей и фруктов**
+struct Product {
+    let name: String
+    let quantity: Int
+    let price: Double
+    let expirationDate: Date?
+    let condition: String?
+
+    func totalCost() -> Double {
+        return Double(quantity) * price
+    }
+
+    func checkQuality() -> Bool {
+        if let expirationDate = expirationDate, expirationDate < Date() {
+            return false
+        }
+
+        if let condition = condition, condition != "Хорошее" {
+            return false
+        }
+
+        return true
+    }
+}
+
+extension Product {
+    static let products: [Product] = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+
+        return [
+            Product(
+                name: "Яблоки",
+                quantity: 100,
+                price: 50.0,
+                expirationDate: formatter.date(from: "2025/01/01"),
+                condition: "Хорошее"
+            ),
+            Product(
+                name: "Картофель",
+                quantity: 200,
+                price: 30.0,
+                expirationDate: formatter.date(from: "2024/12/30"),
+                condition: "Хорошее"
+            ),
+            Product(
+                name: "Морковь",
+                quantity: 150,
+                price: 40.0,
+                expirationDate: formatter.date(from: "2024/12/25"),
+                condition: "Плохое"
+            )
+        ]
+    }()
+}
+
+func generateReport(products: [Product]) {
+    var totalCostAllSupplies = Double()
+
+    for product in products {
+        print("Наименование товара: \(product.name)")
+        print("Количество: \(product.quantity) шт")
+        print("Стоимость за единицу: \(product.price) руб.")
+        print("Общая стоимость партии: \(product.totalCost()) руб.")
+        print("Проверка качества: \(product.checkQuality() ? "Качество хорошее" : "Качество плохое")")
+        print("-----------------------------------")
+
+        totalCostAllSupplies += product.totalCost()
+    }
+
+    print("Общая стоимость всех поставок: \(totalCostAllSupplies) руб.")
+    print("-----------------------------------")
+
+}
+
+let productsList = Product.products
+generateReport(products: productsList)
