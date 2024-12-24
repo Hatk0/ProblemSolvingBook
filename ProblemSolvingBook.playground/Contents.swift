@@ -3160,3 +3160,53 @@ secondAquarium.addFish(thirdFish)
 
 print("Всего рыбок в аквариумах: \(Aquarium.getTotalFishCount())")
 print("-----------------------------------")
+
+/// **№147. Продажа домов в коттеджном поселке**
+class CottageSettlement {
+
+    var availableHouses: [String] = []
+    var soldHouses: [String] = []
+
+    func addHouseToAvailable(houseName: String) {
+        availableHouses.append(houseName)
+    }
+
+    func markHouseAsSold(houseName: String) {
+        if let index = availableHouses.firstIndex(of: houseName) {
+            availableHouses.remove(at: index)
+            soldHouses.append(houseName)
+        } else {
+            print("Дом \(houseName) не найден в базе")
+        }
+    }
+
+    func printAvailableHouses() {
+        if availableHouses.isEmpty {
+            print("Доступных домов нет")
+        } else {
+            print("Доступные дома: \(availableHouses)")
+        }
+    }
+
+    func printSoldHouses() {
+        if soldHouses.isEmpty {
+            print("Нет проданных домов")
+        } else {
+            print("Проданные дома: \(soldHouses)")
+
+        }
+    }
+}
+
+let cottageSettlement = CottageSettlement()
+cottageSettlement.addHouseToAvailable(houseName: "Дом 1")
+cottageSettlement.addHouseToAvailable(houseName: "Дом 2")
+cottageSettlement.addHouseToAvailable(houseName: "Дом 3")
+
+cottageSettlement.printAvailableHouses()
+
+cottageSettlement.markHouseAsSold(houseName: "Дом 1")
+
+cottageSettlement.printAvailableHouses()
+cottageSettlement.printSoldHouses()
+print("-----------------------------------")
