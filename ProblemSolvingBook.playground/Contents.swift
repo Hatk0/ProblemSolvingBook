@@ -2846,11 +2846,13 @@ func playGame() {
 
         if let winner = checkWinner(board: board) {
             print("Игрок \(winner.rawValue) победил!")
+            print("-----------------------------------")
             break
         }
 
         if isDraw(board: board) {
             print("Ничья!")
+            print("-----------------------------------")
             break
         }
 
@@ -2859,3 +2861,25 @@ func playGame() {
 }
 
 playGame()
+
+/// **№137. Расчет характеристик круга**
+struct Circle {
+    var radius: Double
+
+    var area: Double {
+        return Double.pi * radius * radius
+    }
+
+    var circumference: Double {
+        return Double.pi * radius * 2
+    }
+}
+
+let circle = Circle(radius: 7)
+
+print("""
+Радиус круга: \(circle.radius)
+Площадь круга: \(circle.area)
+Длина окружности круга: \(circle.circumference)
+""")
+print("-----------------------------------")
