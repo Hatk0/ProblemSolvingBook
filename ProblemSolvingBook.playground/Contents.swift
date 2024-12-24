@@ -2905,3 +2905,25 @@ print("""
 Температуа из градусов Фаренгейта в градусы Цельсия: \(temperatureConverter.fahrenheitToCelsius)
 """)
 print("-----------------------------------")
+
+/// **№139. Трекинг здоровья**
+class HealthTracker {
+
+    lazy var pulseRate: Int = {
+        print("Инициализация pulseRate...")
+        return 0
+    }()
+
+    func recordPulse(newPulse: Int) {
+        print("Записываем новый пульс: \(newPulse)")
+        pulseRate = newPulse
+    }
+}
+
+let healthTracker = HealthTracker()
+
+print("Свойство pulseRate еще не инициализировано.")
+print("Текущий пульс: \(healthTracker.pulseRate)")
+
+healthTracker.recordPulse(newPulse: 80)
+print("Обновленный пульс: \(healthTracker.pulseRate)")
