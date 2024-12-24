@@ -3210,3 +3210,62 @@ cottageSettlement.markHouseAsSold(houseName: "Дом 1")
 cottageSettlement.printAvailableHouses()
 cottageSettlement.printSoldHouses()
 print("-----------------------------------")
+
+/// **№148. Популярность книг у покупателей**
+struct BookType: Hashable {
+    let title: String
+    let author: String
+}
+
+class BookStore {
+
+    private var books: [BookType] = []
+    private var salesCount: [BookType: Int] = [:]
+
+    func addBook(title: String, author: String) {
+        let book = BookType(title: title, author: author)
+        books.append(book)
+        salesCount[book] = 0
+    }
+
+    func sellBook(title: String, author: String) {
+        if let index = books.firstIndex(where: { $0.title == title && $0.author == author }) {
+            let book = books[index]
+            salesCount[book, default: 0] += 1
+        } else {
+            print("Книга \(title) не найдена в магазине.")
+        }
+    }
+
+    func mostPopularBooks() -> [BookType] {
+        guard let maxSales = salesCount.values.max() else {
+            return []
+        }
+
+        return salesCount.filter { $0.value == maxSales }.map { $0.key }
+    }
+
+    func printBooks() {
+        for book in books {
+            let sales = salesCount[book, default: 0]
+            print("Книга: \(book.title), Автор: \(book.author), Продано: \(sales) экземпляров")
+        }
+    }
+}
+
+let store = BookStore()
+store.addBook(title: "Мастер и Маргарита", author: "Михаил Булгаков")
+store.addBook(title: "Война и мир", author: "Лев Толстой")
+store.addBook(title: "Преступление и наказание", author: "Федор Достоевский")
+
+store.sellBook(title: "Мастер и Маргарита", author: "Михаил Булгаков")
+store.sellBook(title: "Мастер и Маргарита", author: "Михаил Булгаков")
+store.sellBook(title: "Война и мир", author: "Лев Толстой")
+
+store.printBooks()
+
+let popularBooks = store.mostPopularBooks()
+print("Самые популярные книги:")
+for book in popularBooks {
+    print("\(book.title) - \(book.author)")
+}
