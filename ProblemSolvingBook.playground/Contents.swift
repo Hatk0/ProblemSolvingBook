@@ -2753,3 +2753,109 @@ func generateReport(products: [Product]) {
 
 let productsList = Product.products
 generateReport(products: productsList)
+
+/// **№136. Игра "Крестики-нолики"**
+enum CellState: String {
+    case empty = ""
+    case cross = "X"
+    case nought = "O"
+}
+
+func initializeBoard(rows: Int, columns: Int) -> [[CellState]] {
+    Array(repeating: Array(repeating: .empty, count: columns), count: rows)
+}
+
+func displayBoard(board: [[CellState]]) {
+    for row in board {
+        print(row.map { $0.rawValue }.joined(separator: " | "))
+        print(String(repeating: "-", count: row.count * 4 - 1))
+    }
+}
+
+func isMoveValid(
+    board: [[CellState]],
+    row: Int,
+    column: Int
+) -> Bool {
+    row >= 0 && row < board.count && column >= 0 && column < board[0].count && board[row][column] == .empty
+}
+
+struct Move {
+    let row: Int
+    let column: Int
+    let type: CellState
+}
+
+func makeMove(board: inout [[CellState]], move: Move) -> Bool {
+    if isMoveValid(board: board, row: move.row, column: move.column) {
+        board[move.row][move.column] = move.type
+        return true
+    }
+    return false
+}
+
+func checkWinner(board: [[CellState]]) -> CellState? {
+    let rows = board.count
+    let columns = board[0].count
+
+    for row in board {
+        if row.allSatisfy({ $0 == .cross }) { return .cross }
+        if row.allSatisfy({ $0 == .nought }) { return .nought }
+    }
+
+    for column in 0..<columns {
+        let colValues = board.map { $0[column] }
+        if colValues.allSatisfy({ $0 == .cross }) { return .cross }
+        if colValues.allSatisfy({ $0 == .nought }) { return .nought }
+    }
+
+    if (0..<rows).allSatisfy({ board[$0][$0] == .cross }) { return .cross }
+    if (0..<rows).allSatisfy({ board[$0][$0] == .nought }) { return .nought }
+
+    if (0..<rows).allSatisfy({ board[$0][rows - $0 - 1] == .cross }) { return .cross }
+    if (0..<rows).allSatisfy({ board[$0][rows - $0 - 1] == .nought }) { return .nought }
+
+    return nil
+}
+
+func isDraw(board: [[CellState]]) -> Bool {
+    return board.allSatisfy { row in row.allSatisfy { $0 != .empty } }
+}
+
+func playGame() {
+    var board = initializeBoard(rows: 3, columns: 3)
+    var currentPlayer: CellState = .cross
+
+    print("Добро пожаловать в игру 'Крестики-Нолики'!")
+    displayBoard(board: board)
+
+    while true {
+        print("\(currentPlayer.rawValue) - делает ход...")
+
+        var moveMade = false
+        while !moveMade {
+            let row = Int.random(in: 0..<board.count)
+            let column = Int.random(in: 0..<board[0].count)
+
+            if makeMove(board: &board, move: Move(row: row, column: column, type: currentPlayer)) {
+                moveMade = true
+            }
+        }
+
+        displayBoard(board: board)
+
+        if let winner = checkWinner(board: board) {
+            print("Игрок \(winner.rawValue) победил!")
+            break
+        }
+
+        if isDraw(board: board) {
+            print("Ничья!")
+            break
+        }
+
+        currentPlayer = (currentPlayer == .cross) ? .nought : .cross
+    }
+}
+
+playGame()
