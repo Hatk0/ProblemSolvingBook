@@ -3006,3 +3006,37 @@ clickCounter.click()
 clickCounter.click()
 clickCounter.click()
 print("-----------------------------------")
+
+/// **№143. Система резервного копирования**
+class BackupSystem {
+
+    var backupInProgress: Bool {
+        willSet {
+            if backupInProgress == true {
+                print("Процесс резервного копирования начат")
+            }
+        }
+        didSet {
+            if backupInProgress == false {
+                print("Процесс резервного копирования завершен")
+            }
+        }
+    }
+
+    init(backupInProgress: Bool) {
+        self.backupInProgress = backupInProgress
+    }
+
+    func startBackup() {
+        backupInProgress = true
+    }
+
+    func finishBackup() {
+        backupInProgress = false
+    }
+}
+
+let backupSystem = BackupSystem(backupInProgress: false)
+backupSystem.startBackup()
+backupSystem.finishBackup()
+print("-----------------------------------")
