@@ -3061,6 +3061,7 @@ struct ValidTitle {
 class TaskItem {
 
     @ValidTitle var title: String
+
     var description: String?
 
     init(title: String, description: String? = nil) {
@@ -3080,4 +3081,37 @@ task2.title = "Valid Task"
 
 print("Задача 1 после изменения: \(task1.title), описание: \(task1.description ?? "Нет описания")")
 print("Задача 2 после изменения: \(task2.title), описание: \(task2.description ?? "Нет описания")")
+print("-----------------------------------")
+
+/// **№145. Учет книг в библиотеке**
+@propertyWrapper
+struct Availability {
+    private var available: Bool
+
+    init(wrappedValue: Bool) {
+        self.available = wrappedValue
+    }
+
+    var wrappedValue: Bool {
+        get {
+            return available
+        }
+        set {
+            available = newValue
+            print("Статус доступности изменен: \(available ? "Доступна" : "Не доступна")")
+        }
+    }
+}
+
+struct Book {
+    var title: String
+
+    @Availability var isAvailable: Bool
+}
+
+var book1 = Book(title: "Book 1", isAvailable: true)
+book1.isAvailable = false
+book1.isAvailable = true
+
+print("Книга \(book1.title) \(book1.isAvailable ? "доступна" : "недоступна")")
 print("-----------------------------------")
