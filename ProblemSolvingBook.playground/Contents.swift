@@ -2981,3 +2981,28 @@ let temperatureSensor = TemperatureSensor(currentTemperature: -12)
 temperatureSensor.currentTemperature = -5
 temperatureSensor.currentTemperature = 6
 print("-----------------------------------")
+
+/// **№142. Подсчет количества нажатий на кнопку**
+class ClickCounter {
+
+    var clickCount: Int {
+        didSet {
+            print("Количество кликов увеличилось до \(clickCount)")
+        }
+    }
+
+    init(clickCount: Int) {
+        self.clickCount = 0
+    }
+
+    func click() {
+        clickCount += 1
+    }
+}
+
+let clickCounter = ClickCounter(clickCount: 0)
+clickCounter.click()
+clickCounter.click()
+clickCounter.click()
+clickCounter.click()
+print("-----------------------------------")
