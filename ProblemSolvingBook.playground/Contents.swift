@@ -2927,3 +2927,37 @@ print("Текущий пульс: \(healthTracker.pulseRate)")
 
 healthTracker.recordPulse(newPulse: 80)
 print("Обновленный пульс: \(healthTracker.pulseRate)")
+print("-----------------------------------")
+
+/// **№140. Профиль пользователя**
+class ImageLoader {
+
+    init() {
+        print("Экземпляр ImageLoader создан")
+    }
+
+    func load() {
+        print("Изображение загружено")
+    }
+}
+
+class Profile {
+
+    var name: String
+    lazy var avatar: ImageLoader = {
+        print("Инициализация avatar...")
+        return ImageLoader()
+    }()
+
+    init(name: String) {
+        self.name = name
+    }
+
+    func loadAvatar() {
+        avatar.load()
+    }
+}
+
+var profile = Profile(name: "Джон")
+profile.loadAvatar()
+print("-----------------------------------")
