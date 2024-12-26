@@ -3522,3 +3522,95 @@ print("Второй пароль: \(secondPassword)")
 let thirdPassword = PasswordManager.generatePassword(length: 20)
 print("Третий пароль: \(thirdPassword)")
 print("-----------------------------------")
+
+/// **№153. Система управления клиентами в фитнес-клубе**
+enum MembershipType: String {
+    case basic = "Базовый"
+    case standard = "Стандарт"
+    case premium = "Премиум"
+}
+
+struct Client {
+    let name: String
+    var age: Int
+    var membership: MembershipType
+    var visits: Int
+}
+
+class FitnessClub {
+
+    private var clients: [Client] = []
+
+    var totalClients: Int { clients.count }
+
+    func addClient(
+        name: String,
+        age: Int,
+        membership: MembershipType
+    ) {
+        guard !clients.contains(where: { $0.name == name }) else { return }
+        let client = Client(name: name, age: age, membership: membership, visits: 0)
+        clients.append(client)
+        print("Клиент добавлен: \(name), возраст: \(age), абонемент: \(membership.rawValue)")
+    }
+
+    func removeClient(name: String) {
+        guard let clientIndex = clients.firstIndex(where: { $0.name == name }) else { return }
+        clients.remove(at: clientIndex)
+        print("Клиент \(name) удален.")
+    }
+
+    func getVisits(forClient name: String) -> Int? {
+        clients.first(where: { $0.name == name })?.visits ?? 0
+    }
+
+    func averageVisitsPerClient() -> Double {
+        guard !clients.isEmpty else { return 0 }
+        let totalVisits = clients.reduce(0) { $0 + $1.visits }
+        return Double(totalVisits) / Double(clients.count)
+    }
+
+    func mostFrequentVisitCount() -> Int? {
+        guard !clients.isEmpty else { return nil }
+        let visitCounts = clients.map { $0.visits }
+        let frequency = Dictionary(visitCounts.map { ($0, 1) }, uniquingKeysWith: +)
+        return frequency.max(by: { $0.value < $1.value })?.key
+    }
+
+    func offerPersonalTraining(toClient name: String) {
+        guard let client = clients.first(where: { $0.name == name }) else { return }
+        print("Предложение персональных тренировок для клиента \(client.name): \(client.membership.rawValue) абонемент предоставляет дополнительные услуги для улучшения тренировочного процесса")
+    }
+
+    func printClients() {
+        guard !clients.isEmpty else { return }
+        print("Список клиентов фитнес-клуба:")
+        for client in clients {
+            print("- \(client.name), возраст: \(client.age), абонемент: \(client.membership.rawValue), посещений: \(client.visits)")
+        }
+    }
+}
+
+let fitnessClub = FitnessClub()
+fitnessClub.addClient(name: "Петр", age: 25, membership: .premium)
+fitnessClub.addClient(name: "Иван", age: 30, membership: .basic)
+fitnessClub.addClient(name: "Егор", age: 35, membership: .standard)
+
+fitnessClub.printClients()
+
+if let visits = fitnessClub.getVisits(forClient: "Иван") {
+    print("Иван посетила фитнес-клуб \(visits) раз.")
+}
+
+print("Среднее количество посещений на клиента: \(fitnessClub.averageVisitsPerClient())")
+
+if let mostFrequentVisits = fitnessClub.mostFrequentVisitCount() {
+    print("Наиболее частое количество посещений: \(mostFrequentVisits)")
+}
+
+fitnessClub.offerPersonalTraining(toClient: "Иван")
+
+fitnessClub.removeClient(name: "Егор")
+
+fitnessClub.printClients()
+print("-----------------------------------")
