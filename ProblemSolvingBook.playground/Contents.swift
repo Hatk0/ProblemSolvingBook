@@ -3269,3 +3269,86 @@ print("Самые популярные книги:")
 for book in popularBooks {
     print("\(book.title) - \(book.author)")
 }
+print("-----------------------------------")
+
+/// **№149. Рейтинг студентов**
+struct Student {
+    let name: String
+    var score: Int
+}
+
+class StudentManager {
+
+    private var students: [Student] = []
+
+    func addStudent(_ student: Student) {
+        let newStudent = Student(name: student.name, score: student.score)
+        students.append(newStudent)
+    }
+
+    func addScoreToStudent(name: String, additionalScore: Int = 10) {
+        guard let index = students.firstIndex(where: { $0.name == name }) else {
+            print("Студент с именем \(name) не найден.")
+            return
+        }
+
+        students[index].score += additionalScore
+
+        print("\(students[index].name) выполнил задание, получил \(additionalScore) баллов. Теперь у него \(students[index].score) очков")
+
+        let oldRanking = ranking()
+        recalculateRanking()
+        let newRanking = ranking()
+
+        printRankingChange(old: oldRanking, new: newRanking)
+    }
+
+    func printRanking() {
+        print("Текущий рейтинг студентов:")
+        for (index, student) in students.enumerated() {
+            print("\(index + 1). \(student.name): \(student.score) баллов")
+        }
+    }
+}
+
+private extension StudentManager {
+
+    func recalculateRanking() {
+        students.sort { $0.score > $1.score }
+    }
+
+    func ranking() -> [String: Int] {
+        var rank: [String: Int] = [:]
+        for (index, student) in students.enumerated() {
+            rank[student.name] = index + 1
+        }
+        return rank
+    }
+
+    func printRankingChange(old: [String: Int], new: [String: Int]) {
+        print("Обновленный рейтинг студентов:")
+        for (index, student) in students.enumerated() {
+            let newRank = index + 1
+            let oldRank = old[student.name] ?? 0
+            let rankChange = oldRank - newRank
+
+            if rankChange > 0 {
+                print("\(student.name): место улучшилось на \(rankChange) (было \(oldRank), стало \(newRank))")
+            } else if rankChange < 0 {
+                print("\(student.name): место ухудшилось на \(-rankChange) (было \(oldRank), стало \(newRank))")
+            } else {
+                print("\(student.name): место не изменилось (\(newRank))")
+            }
+        }
+    }
+}
+
+let studentManager = StudentManager()
+studentManager.addStudent(Student(name: "Владимир", score: 60))
+studentManager.addStudent(Student(name: "Александр", score: 70))
+studentManager.addStudent(Student(name: "Иван", score: 55))
+
+studentManager.printRanking()
+
+studentManager.addScoreToStudent(name: "Владимир")
+studentManager.addScoreToStudent(name: "Александр")
