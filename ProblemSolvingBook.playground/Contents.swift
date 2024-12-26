@@ -3674,3 +3674,10 @@ bankAccount.withdraw(amount: 1400)
 
 bankAccount.printStatement()
 print("-----------------------------------")
+
+/// **№155. map()**
+let strings = ["Python", "Ruby", "Swift"]
+let lengths = strings.map { $0.count }
+
+print(lengths)
+print("-----------------------------------")
