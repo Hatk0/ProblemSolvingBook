@@ -3352,3 +3352,61 @@ studentManager.printRanking()
 
 studentManager.addScoreToStudent(name: "Владимир")
 studentManager.addScoreToStudent(name: "Александр")
+print("-----------------------------------")
+
+/// **№150. Домашний помощник**
+struct HomeTask {
+    let title: String
+    var isCompleted: Bool
+}
+
+class HomeAssistant {
+
+    private var tasks: [HomeTask] = []
+
+    var pendingTasksCount: Int {
+        tasks.filter { !$0.isCompleted }.count
+    }
+
+    func addTask(title: String) {
+        let newTask = HomeTask(title: title, isCompleted: false)
+        tasks.append(newTask)
+        print("Задача добавлена: \"\(title)\"")
+    }
+
+    func removeTask(title: String) {
+        guard let index = tasks.firstIndex(where: { $0.title == title }) else { return }
+        tasks.remove(at: index)
+        print("Задача удалена: \"\(title)\"")
+    }
+
+    func completeTask(title: String) {
+        guard let index = tasks.firstIndex(where: { $0.title == title }) else { return }
+        tasks[index].isCompleted = true
+        print("Задача выполнена: \"\(title)\"")
+    }
+
+    func listTasks() {
+        guard !tasks.isEmpty else { return }
+        print("Список задач:")
+        for task in tasks {
+            let status = task.isCompleted ? "✅ Выполнена" : "⏳ Ожидает выполнения"
+            print("- \(task.title): \(status)")
+        }
+    }
+}
+
+let homeAssistant = HomeAssistant()
+homeAssistant.addTask(title: "Почитать книгу")
+homeAssistant.addTask(title: "Посмотреть фильм")
+homeAssistant.addTask(title: "Пойти на поход")
+
+homeAssistant.listTasks()
+
+homeAssistant.completeTask(title: "Почитать книгу")
+homeAssistant.removeTask(title: "Посмотреть фильм")
+
+homeAssistant.listTasks()
+
+print("Количество невыполненных задач: \(homeAssistant.pendingTasksCount)")
+print("-----------------------------------")
