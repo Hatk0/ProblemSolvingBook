@@ -3725,3 +3725,66 @@ print(stringsByLength)
 let stringsByAlphabet = sortStrings(["apple", "winner", "check", "bed"]) { $0 < $1 }
 print(stringsByAlphabet)
 print("-----------------------------------")
+
+/// **№159. Организация ярмарки**
+struct Item {
+    let name: String
+    let price: Double
+}
+
+struct Vendor {
+    let name: String
+    var items: [Item]
+}
+
+func sortVendors(_ vendors: [Vendor], by comparison: (Vendor, Vendor) -> Bool) -> [Vendor] {
+    vendors.sorted(by: comparison)
+}
+
+func compareByName(_ firstVendor: Vendor, _ secondVendor: Vendor) -> Bool {
+    firstVendor.name < secondVendor.name
+}
+
+func compareByLowestPrice(_ firstVendor: Vendor, _ secondVendor: Vendor) -> Bool {
+    let firstLowestPrice = firstVendor.items.map { $0.price }.min() ?? Double.greatestFiniteMagnitude
+    let secondLowestPrice = secondVendor.items.map { $0.price }.min() ?? Double.greatestFiniteMagnitude
+    return firstLowestPrice < secondLowestPrice
+}
+
+let firstVendor = Vendor(
+    name: "Фруктовый ларек",
+    items: [
+        Item(name: "Яблоко", price: 1.2),
+        Item(name: "Банан", price: 0.8),
+        Item(name: "Апельсин", price: 1.5)
+    ]
+)
+let secondVendor = Vendor(
+    name: "Овощной уголок",
+    items: [
+        Item(name: "Томат", price: 2),
+        Item(name: "Огурец", price: 1),
+        Item(name: "Морковь", price: 1.1)
+    ]
+)
+let thirdVendor = Vendor(
+    name: "Свежие овощи",
+    items: [
+        Item(name: "Салат", price: 1.5),
+        Item(name: "Капуста", price: 1),
+        Item(name: "Шпинат", price: 1.2)
+    ]
+)
+
+let sortedByName = sortVendors([firstVendor, secondVendor, thirdVendor], by: compareByName)
+print("Сортировка по имени:")
+for vendor in sortedByName {
+    print("\(vendor.name): \(vendor.items.map { "\($0.name) - \($0.price) руб." }.joined(separator: ", "))")
+}
+
+let sortedByLowestPrice = sortVendors([firstVendor, secondVendor, thirdVendor], by: compareByLowestPrice)
+print("\nСортировка по самой низкой цене:")
+for vendor in sortedByLowestPrice {
+    print("\(vendor.name): \(vendor.items.map { "\($0.name) - \($0.price) руб." }.joined(separator: ", "))")
+}
+print("-----------------------------------")
