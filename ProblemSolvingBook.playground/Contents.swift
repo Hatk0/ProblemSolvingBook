@@ -3614,3 +3614,63 @@ fitnessClub.removeClient(name: "Егор")
 
 fitnessClub.printClients()
 print("-----------------------------------")
+
+/// **№154. Управление банковским счетом**
+struct BankTransaction {
+    var amount: Double
+    var date: Date
+    let type: TransactionType
+
+    enum TransactionType: String {
+        case deposit = "Депозит"
+        case withdrawal = "Снятие"
+    }
+}
+
+struct BankAccount {
+    var balance: Double
+    var transactions: [BankTransaction]
+
+    mutating func deposit(amount: Double) {
+        guard amount > 0 else { return }
+
+        balance += amount
+
+        let transaction = BankTransaction(amount: amount, date: Date(), type: .deposit)
+        transactions.append(transaction)
+        print("Пополнение на сумму \(amount). Новый баланс: \(balance)")
+    }
+
+    mutating func withdraw(amount: Double) {
+        guard amount > 0 else { return }
+
+        if amount > balance {
+            print("Ошибка: недостаточно средств для снятия \(amount). Текущий баланс: \(balance)")
+        } else {
+            balance -= amount
+            let transaction = BankTransaction(amount: amount, date: Date(), type: .withdrawal)
+            transactions.append(transaction)
+            print("Снятие средств на сумму \(amount). Новый баланс: \(balance)")
+        }
+    }
+
+    func printStatement() {
+        print("Выписка по счету:")
+        for transaction in transactions {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let formattedDate = formatter.string(from: transaction.date)
+            print("\(formattedDate) | Тип транзакции: \(transaction.type.rawValue) | Сумма: \(transaction.amount)")
+        }
+        print("Текущий баланс: \(balance)")
+    }
+}
+
+var bankAccount = BankAccount(balance: 1000, transactions: [])
+bankAccount.deposit(amount: 500)
+bankAccount.withdraw(amount: 200)
+
+bankAccount.withdraw(amount: 1400)
+
+bankAccount.printStatement()
+print("-----------------------------------")
