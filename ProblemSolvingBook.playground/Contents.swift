@@ -3681,3 +3681,23 @@ let lengths = strings.map { $0.count }
 
 print(lengths)
 print("-----------------------------------")
+
+/// **№156. Сортировка магов по их магическим способностям**
+struct Magician {
+    let name: String
+    var magicLevel: Int
+}
+
+let firstMagician = Magician(name: "Гарри Поттер", magicLevel: 8)
+let secondMagician = Magician(name: "Гермиона Грейнджер", magicLevel: 10)
+let thirdMagician = Magician(name: "Рон Уизли", magicLevel: 6)
+let fourthMagician = Magician(name: "Дамблдор", magicLevel: 9)
+let fifthMagician = Magician(name: "Волдеморт", magicLevel: 10)
+
+let magicians = [firstMagician, secondMagician, thirdMagician, fourthMagician, fifthMagician]
+let sortedMagicians = magicians.sorted { $0.magicLevel < $1.magicLevel }
+
+for magician in sortedMagicians {
+    print("\(magician.name): \(magician.magicLevel)")
+}
+print("-----------------------------------")
