@@ -3713,3 +3713,15 @@ print(evenNumbers)
 let positiveNumbers = filterNumbers([-1, 2, -3, 4, 5]) { $0 > 0 }
 print(positiveNumbers)
 print("-----------------------------------")
+
+/// **№158. Сортировка строк**
+func sortStrings(_ strings: [String], condition: (String, String) -> Bool) -> [String] {
+    strings.sorted(by: condition)
+}
+
+let stringsByLength = sortStrings(["strict", "car", "drop", "message"]) { $0.count < $1.count }
+print(stringsByLength)
+
+let stringsByAlphabet = sortStrings(["apple", "winner", "check", "bed"]) { $0 < $1 }
+print(stringsByAlphabet)
+print("-----------------------------------")
