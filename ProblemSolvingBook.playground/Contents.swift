@@ -3410,3 +3410,87 @@ homeAssistant.listTasks()
 
 print("Количество невыполненных задач: \(homeAssistant.pendingTasksCount)")
 print("-----------------------------------")
+
+/// **№151. Наличие товара на складе**
+struct ClothingItem {
+    let type: String
+    var quantity: Int
+    var availableSizes: [String]
+}
+
+class ClothingStore {
+
+    private var inventory: [ClothingItem] = []
+
+    func addItem(
+        type: String,
+        quantity: Int,
+        availableSizes: [String]
+    ) {
+        guard !inventory.contains(where: { $0.type == type }) else { return }
+        let newItem = ClothingItem(
+            type: type,
+            quantity: quantity,
+            availableSizes: availableSizes
+        )
+        inventory.append(newItem)
+        print("Добавлен товар: \(type), количество: \(quantity), размеры: \(availableSizes.joined(separator: ", "))")
+    }
+
+    func updateItem(
+        type: String,
+        newQuantity: Int? = nil,
+        newSizes: [String]? = nil
+    ) {
+        guard let index = inventory.firstIndex(where: { $0.type == type }) else {
+            return
+        }
+
+        if let quantity = newQuantity {
+            inventory[index].quantity = quantity
+            print("Обновлено количество товара \"\(type)\": \(quantity)")
+        }
+
+        if let sizes = newSizes {
+            inventory[index].availableSizes = sizes
+            print("Обновлены размеры для товара \"\(type)\": \(sizes.joined(separator: ", "))")
+        }
+    }
+
+    func isSizeAvailable(forType type: String, size: String) -> Bool {
+        guard let index = inventory.firstIndex(where: { $0.type == type }) else { return false }
+        return inventory[index].availableSizes.contains(size)
+    }
+
+    func listItems() {
+        guard !inventory.isEmpty else { return }
+        print("Текущий инвентарь:")
+        for item in inventory {
+            print("- \(item.type): \(item.quantity) шт., доступные размеры: \(item.availableSizes.joined(separator: ", "))")
+        }
+    }
+}
+
+let clothingStore = ClothingStore()
+clothingStore.addItem(type: "Футболка", quantity: 50, availableSizes: ["S", "M", "L"])
+clothingStore.addItem(type: "Джинсы", quantity: 30, availableSizes: ["M", "L", "XL"])
+
+clothingStore.listItems()
+
+clothingStore.updateItem(type: "Футболка", newQuantity: 60)
+clothingStore.updateItem(type: "Джинсы", newSizes: ["S", "M", "L", "XL"])
+
+clothingStore.listItems()
+
+if clothingStore.isSizeAvailable(forType: "Футболка", size: "M") {
+    print("Размер M для \"Футболка\" доступен.")
+} else {
+    print("Размер M для \"Футболка\" недоступен.")
+}
+
+if clothingStore.isSizeAvailable(forType: "Джинсы", size: "XS") {
+    print("Размер XS для \"Джинсы\" доступен.")
+} else {
+    print("Размер XS для \"Джинсы\" недоступен.")
+}
+print("-----------------------------------")
