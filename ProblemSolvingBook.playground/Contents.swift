@@ -3494,3 +3494,31 @@ if clothingStore.isSizeAvailable(forType: "Джинсы", size: "XS") {
     print("Размер XS для \"Джинсы\" недоступен.")
 }
 print("-----------------------------------")
+
+/// **№152. Генерация случайного пароля**
+struct PasswordManager {
+    static func generatePassword(length: Int) -> String {
+        guard length > 0 else { return "" }
+
+        let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()"
+        var password = ""
+
+        for _ in 0..<length {
+            if let randomCharacter = characters.randomElement() {
+                password.append(randomCharacter)
+            }
+        }
+
+        return password
+    }
+}
+
+let firstPassword = PasswordManager.generatePassword(length: 8)
+print("Первый пароль: \(firstPassword)")
+
+let secondPassword = PasswordManager.generatePassword(length: 12)
+print("Второй пароль: \(secondPassword)")
+
+let thirdPassword = PasswordManager.generatePassword(length: 20)
+print("Третий пароль: \(thirdPassword)")
+print("-----------------------------------")
