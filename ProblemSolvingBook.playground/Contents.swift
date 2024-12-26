@@ -3701,3 +3701,15 @@ for magician in sortedMagicians {
     print("\(magician.name): \(magician.magicLevel)")
 }
 print("-----------------------------------")
+
+/// **№157. Фильтрация массива**
+func filterNumbers(_ numbers: [Int], condition: (Int) -> Bool) -> [Int] {
+    numbers.filter(condition)
+}
+
+let evenNumbers = filterNumbers([1, 2, 3, 4, 5, 6]) { $0 % 2 == 0 }
+print(evenNumbers)
+
+let positiveNumbers = filterNumbers([-1, 2, -3, 4, 5]) { $0 > 0 }
+print(positiveNumbers)
+print("-----------------------------------")
