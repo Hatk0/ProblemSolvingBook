@@ -3811,3 +3811,40 @@ let categorizedGuests = splitGuests(guests: guests) { name in
 
 print(categorizedGuests)
 print("-----------------------------------")
+
+/// **№161. Поиск туров для турагентства**
+struct Tour {
+    let name: String
+    let isAvailable: Bool
+}
+
+struct Hotel {
+    let id = UUID()
+    let tours: [Tour]
+}
+
+func getAvailableTours(from hotels: [Hotel]) -> [Tour] {
+    hotels.flatMap { hotel in
+        hotel.tours.filter { $0.isAvailable }
+    }
+}
+
+let hotels: [Hotel] = [
+    Hotel(tours: [
+        Tour(name: "Safari Adventure", isAvailable: true),
+        Tour(name: "City Tour", isAvailable: false)
+    ]),
+    Hotel(tours: [
+        Tour(name: "Beach Relaxation", isAvailable: true),
+        Tour(name: "Mountain Hiking", isAvailable: true)
+    ]),
+    Hotel(tours: [
+        Tour(name: "Cultural Heritage", isAvailable: false)
+    ])
+]
+let availableTours = getAvailableTours(from: hotels)
+
+for tour in availableTours {
+    print("Доступные туры: \(tour.name)")
+}
+print("-----------------------------------")
