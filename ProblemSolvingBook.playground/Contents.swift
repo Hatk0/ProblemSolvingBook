@@ -3788,3 +3788,26 @@ for vendor in sortedByLowestPrice {
     print("\(vendor.name): \(vendor.items.map { "\($0.name) - \($0.price) руб." }.joined(separator: ", "))")
 }
 print("-----------------------------------")
+
+/// **№160. VIP-гости мероприятия**
+func splitGuests(guests: [String], isVIP: (String) -> Bool) -> [String: [String]] {
+    var result: [String: [String]] = ["VIP": [], "Regular": []]
+
+    for guest in guests {
+        if isVIP(guest) {
+            result["VIP"]?.append(guest)
+        } else {
+            result["Regular"]?.append(guest)
+        }
+    }
+
+    return result
+}
+
+let guests = ["Anna", "VIP-Michael", "VIP+Katherine", "John", "VIP-Oleg"]
+let categorizedGuests = splitGuests(guests: guests) { name in
+    name.contains("VIP")
+}
+
+print(categorizedGuests)
+print("-----------------------------------")
