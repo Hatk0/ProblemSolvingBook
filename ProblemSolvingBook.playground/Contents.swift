@@ -4281,3 +4281,110 @@ goblin.sneakAttackCreature(creature: dragon)
 wizard.castSpell(creature: goblin)
 goblin.recoverSneakAttack()
 print("-----------------------------------")
+
+/// **№171. Система управления автомобилями для автосалона**
+class Vehicle {
+
+    var brand: String
+    let color: String
+    let manufactureYear: Int
+
+    init(
+        brand: String,
+        color: String,
+        manufactureYear: Int
+    ) {
+        self.brand = brand
+        self.color = color
+        self.manufactureYear = manufactureYear
+    }
+
+    func displayInfo() {
+        print("Марка: \(brand), Цвет: \(color), Год производства: \(manufactureYear)")
+    }
+}
+
+class Sedan: Vehicle {
+
+    var engineVolume: Double
+    var bodyType = "Седан"
+
+    init(
+        brand: String,
+        color: String,
+        manufactureYear: Int,
+        engineVolume: Double
+    ) {
+        self.engineVolume = engineVolume
+        super.init(
+            brand: brand,
+            color: color,
+            manufactureYear: manufactureYear
+        )
+    }
+
+    override func displayInfo() {
+        super.displayInfo()
+        print("Объем двигателя: \(engineVolume), Тип кузова: \(bodyType)\n")
+    }
+}
+
+class SUV: Vehicle {
+
+    var wheelDrive: String
+    var bodyType = "Внедорожник"
+
+    init(
+        brand: String,
+        color: String,
+        manufactureYear: Int,
+        wheelDrive: String
+    ) {
+        self.wheelDrive = wheelDrive
+        super.init(
+            brand: brand,
+            color: color,
+            manufactureYear: manufactureYear
+        )
+    }
+
+    override func displayInfo() {
+        super.displayInfo()
+        print("Тип привода: \(wheelDrive), Тип кузова: \(bodyType)\n")
+    }
+}
+
+class SportsCar: Vehicle {
+
+    var topSpeed: Int
+    var bodyType = "Спорткар"
+
+    init(
+        brand: String,
+        color: String,
+        manufactureYear: Int,
+        topSpeed: Int
+    ) {
+        self.topSpeed = topSpeed
+        super.init(
+            brand: brand,
+            color: color,
+            manufactureYear: manufactureYear
+        )
+    }
+
+    override func displayInfo() {
+        super.displayInfo()
+        print("Топ скорость: \(topSpeed), Тип кузова: \(bodyType)")
+    }
+}
+
+let sedan = Sedan(brand: "Toyota", color: "Черный", manufactureYear: 2023, engineVolume: 2.5)
+sedan.displayInfo()
+
+let suv = SUV(brand: "BMW", color: "Белый", manufactureYear: 2021, wheelDrive: "4x4")
+suv.displayInfo()
+
+let sportsCar = SportsCar(brand: "Mercedes", color: "Красный", manufactureYear: 2021, topSpeed: 250)
+sportsCar.displayInfo()
+print("-----------------------------------")
