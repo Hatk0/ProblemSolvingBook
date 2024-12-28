@@ -4934,3 +4934,31 @@ let secondApplication = Application(
 )
 print("\nАвтор: \(secondApplication.publisher), версия: \(secondApplication.version), дата: \(secondApplication.releaseDate), опубликовано: \(secondApplication.isPublished)")
 print("-----------------------------------")
+
+/// **№179. Default init**
+class Sofa {
+
+    var color: String
+    var material: String
+    var size: String
+    var price: Double
+
+    init(
+        color: String = "Бежевый",
+        material: String = "Кожа",
+        size: String = "Большой",
+        price: Double = 150_000
+    ) {
+        self.color = color
+        self.material = material
+        self.size = size
+        self.price = price
+    }
+}
+
+let defaultSofa = Sofa()
+print("Цвет: \(defaultSofa.color), материал: \(defaultSofa.material), размер: \(defaultSofa.size), цena: \(defaultSofa.price)\n")
+
+let customSofa = Sofa(color: "Синий", material: "Фабричная", size: "Средний", price: 80_000)
+print("Цвет: \(customSofa.color), материал: \(customSofa.material), размер: \(customSofa.size), цena: \(customSofa.price)")
+print("-----------------------------------")
