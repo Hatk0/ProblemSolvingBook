@@ -4028,3 +4028,55 @@ let errorHandlingClosure: (AppError) -> Void = { error in
 let error: AppError = .networkError
 handleError(error: error, completion: errorHandlingClosure)
 print("-----------------------------------")
+
+/// **№168. Проверка валидности данных формы**
+struct Form {
+    let username: String
+    var email: String
+    var password: String
+}
+
+func validate(form: Form, customValidations: [(Form) -> Bool]) -> Bool {
+    for validation in customValidations {
+        if !validation(form) {
+            return false
+        }
+    }
+    return true
+}
+
+func emailValidation(form: Form) -> Bool {
+    let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+    let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+    return emailPredicate.evaluate(with: form.email)
+}
+
+func passwordValidation(form: Form) -> Bool {
+    let passwordRegex = "^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*]).{8,}$"
+    let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+    return passwordPredicate.evaluate(with: form.password)
+}
+
+func usernameValidation(form: Form, existingUsernames: [String]) -> Bool {
+    if form.username.isEmpty && existingUsernames.contains(form.username) {
+        return false
+    }
+    return true
+}
+
+let existingUsernames = ["user123", "admin", "john_doe"]
+let formData = Form(
+    username: "new_user",
+    email: "user@example.com",
+    password: "Password123!"
+)
+
+let validations: [(Form) -> Bool] = [
+    emailValidation,
+    passwordValidation,
+    { usernameValidation(form: $0, existingUsernames: existingUsernames) }
+]
+
+let isValid = validate(form: formData, customValidations: validations)
+print("Is valid: \(isValid)")
+print("-----------------------------------")
