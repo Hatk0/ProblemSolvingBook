@@ -3998,3 +3998,33 @@ doorController.openDoor { isOpen in
     }
 }
 print("-----------------------------------")
+
+/// **№167. Обработка ошибок**
+enum AppError: Error {
+    case networkError
+    case fileNotFound
+    case unauthorized
+    case customError(message: String)
+}
+
+func handleError(error: AppError, completion: (AppError) -> Void) {
+    print("Error occured: \(error)")
+    completion(error)
+}
+
+let errorHandlingClosure: (AppError) -> Void = { error in
+    switch error {
+    case .networkError:
+        print("Network error, please check your connection.")
+    case .fileNotFound:
+        print("File not found, please check the file path.")
+    case .unauthorized:
+        print("Unauthorized access. Please log in.")
+    case .customError(let message):
+        print("Custom error: \(message)")
+    }
+}
+
+let error: AppError = .networkError
+handleError(error: error, completion: errorHandlingClosure)
+print("-----------------------------------")
