@@ -4523,3 +4523,163 @@ investmentAccount.deposit(amount: 10000)
 investmentAccount.withdraw(amount: 6800)
 print(investmentAccount.estimateInvestmentReturn())
 print("-----------------------------------")
+
+/// **№173. Управление проектами в IT-компании**
+class ITProject {
+
+    var title: String
+    var startDate: Date
+    var endDate: Date
+
+    init(
+        title: String,
+        startDate: Date,
+        endDate: Date
+    ) {
+        self.title = title
+        self.startDate = startDate
+        self.endDate = endDate
+    }
+
+    func displayInfo() {
+        print("Название проекта: \(title), Дата начала: \(startDate), Дата окончания: \(endDate)")
+    }
+
+    func calculateDuration() -> Int {
+        Calendar.current.dateComponents([.day], from: startDate, to: endDate).day ?? 0
+    }
+}
+
+class WebDevelopmentProject: ITProject {
+
+    var technologies: [String]
+    var client: String
+
+    init(
+        title: String,
+        startDate: Date,
+        endDate: Date,
+        technologies: [String],
+        client: String
+    ) {
+        self.technologies = technologies
+        self.client = client
+        super.init(
+            title: title,
+            startDate: startDate,
+            endDate: endDate
+        )
+    }
+
+    override func displayInfo() {
+        super.displayInfo()
+        print("Технологии: \(technologies.joined(separator: ", "))")
+        print("Клиент: \(client)")
+    }
+
+    func estimatedBudget() -> Double {
+        Double(technologies.count) * 5000
+    }
+}
+
+class MobileAppProject: ITProject {
+
+    var platforms: [String]
+    var appType: String
+
+    init(
+        title: String,
+        startDate: Date,
+        endDate: Date,
+        platforms: [String],
+        appType: String
+    ) {
+        self.platforms = platforms
+        self.appType = appType
+        super.init(
+            title: title,
+            startDate: startDate,
+            endDate: endDate
+        )
+    }
+
+    override func displayInfo() {
+        super.displayInfo()
+        print("Платформы: \(platforms.joined(separator: ", "))")
+        print("Тип приложения: \(appType)")
+    }
+
+    func estimatedBudget() -> Double {
+        Double(platforms.count) * 7000
+    }
+}
+
+class AIProject: ITProject {
+    var algorithms: [String]
+    var dataSource: String
+
+    init(
+        title: String,
+        startDate: Date,
+        endDate: Date,
+        algorithms: [String],
+        dataSource: String
+    ) {
+        self.algorithms = algorithms
+        self.dataSource = dataSource
+        super.init(
+            title: title,
+            startDate: startDate,
+            endDate: endDate
+        )
+    }
+
+    override func displayInfo() {
+        super.displayInfo()
+        print("Алгоритмы: \(algorithms.joined(separator: ", "))")
+        print("Дата источника данных: \(dataSource)")
+    }
+
+    func estimateBudget() -> Double {
+        Double(algorithms.count) * 10000
+    }
+}
+
+let itDateFormatter = DateFormatter()
+itDateFormatter.dateFormat = "dd/MM/yyyy"
+let itStartDate = dateFormatter.date(from: "01/01/2024") ?? Date()
+let itEndDate = dateFormatter.date(from: "01/06/2024") ?? Date()
+
+let webProject = WebDevelopmentProject(
+    title: "Проект веб-сайта для компании",
+    startDate: startDate,
+    endDate: endDate,
+    technologies: ["HTML", "CSS", "JavaScript", "React"],
+    client: "Компания X"
+)
+webProject.displayInfo()
+print("Продолжительность проекта: \(webProject.calculateDuration())")
+print("Оценочный бюджет: \(webProject.estimatedBudget()) руб.\n")
+
+let mobileAppProject = MobileAppProject(
+    title: "Разработка мобильного приложения для магазина",
+    startDate: startDate,
+    endDate: endDate,
+    platforms: ["iOS", "Android"],
+    appType: "Утилита"
+)
+mobileAppProject.displayInfo()
+print("Продолжительность проекта: \(mobileAppProject.calculateDuration())")
+print("Оценочный бюджет: \(mobileAppProject.estimatedBudget()) руб.\n")
+
+let aiProject = AIProject(
+    title: "Разработка системы машинного обучения для анализа данных",
+    startDate: startDate,
+    endDate: endDate,
+    algorithms: ["Глубокое обучение", "Обучение с учителем"],
+    dataSource: "Открытые данные"
+)
+aiProject.displayInfo()
+print("Продолжительность проекта: \(aiProject.calculateDuration())")
+print("Оценочный бюджет: \(aiProject.estimateBudget()) руб.")
+print("-----------------------------------")
