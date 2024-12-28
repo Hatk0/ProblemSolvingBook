@@ -4717,3 +4717,55 @@ Animal.describe()
 print("\nЗвук для Cat:")
 cat.makeSound()
 Cat.describe()
+print("-----------------------------------")
+
+/// **№175. Ремонт**
+class Repair {
+
+    func perform() {
+        print("Выполняются ремонтные работы")
+    }
+
+    func estimateCost() -> Double {
+        return 1000
+    }
+}
+
+class PlumbingRepair: Repair {
+
+    override func perform() {
+        print("Выполняются ремонтные работы по водопроводу")
+    }
+
+    override func estimateCost() -> Double {
+        let basePrice = 1500.0
+        let discount = 0.1
+        let discountedCost = basePrice * (1 - discount)
+        return discountedCost
+    }
+}
+
+class ElectricalRepair: Repair {
+
+    override func perform() {
+        print("Выполняются ремонтные работы по электроснабжению")
+    }
+    
+    override func estimateCost() -> Double {
+        let basePrice = 3500.0
+        let increasedFactor = 1.5
+        let increasedCost = basePrice * increasedFactor
+        return increasedCost
+    }
+}
+
+print("Для сантехнических работ:")
+let plumbingRepair = PlumbingRepair()
+plumbingRepair.perform()
+print("Предполагаемая стоимость ремонтных работ по водопроводу: \(plumbingRepair.estimateCost()) руб.")
+
+print("\nДля электромонтажных работ:")
+let electricalRepair = ElectricalRepair()
+electricalRepair.perform()
+print("Предполагаемая стоимость ремонтных работ по электроснабжению: \(electricalRepair.estimateCost()) руб.")
+print("-----------------------------------")
