@@ -3848,3 +3848,40 @@ for tour in availableTours {
     print("Доступные туры: \(tour.name)")
 }
 print("-----------------------------------")
+
+/// **№162. Фильтрация контактов**
+struct Contact {
+    let name: String
+    let phoneNumber: String
+    let email: String
+}
+
+func filterContacts(contacts: [Contact], criteria: (Contact) -> Bool) -> [Contact] {
+    return contacts.filter(criteria)
+}
+
+let contacts = [
+    Contact(
+        name: "John Doe",
+        phoneNumber: "123456789",
+        email: "john.doe@example.com"
+    ),
+    Contact(
+        name: "Jane Smith",
+        phoneNumber: "987654321",
+        email: "jane.smith@example.com"
+    ),
+    Contact(
+        name: "Alice Johnson",
+        phoneNumber: "555123456",
+        email: "alice.johnson@example.com"
+    )
+]
+let filteredContacts = filterContacts(contacts: contacts) { contact in
+    contact.name.hasPrefix("J")
+}
+
+for contact in filteredContacts {
+    print("Name: \(contact.name), Phone: \(contact.phoneNumber), Email: \(contact.email)")
+}
+print("-----------------------------------")
