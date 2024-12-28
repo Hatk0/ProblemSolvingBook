@@ -4080,3 +4080,29 @@ let validations: [(Form) -> Bool] = [
 let isValid = validate(form: formData, customValidations: validations)
 print("Is valid: \(isValid)")
 print("-----------------------------------")
+
+/// **№169. Расчет скидки для списка товаров**
+struct Goods {
+    var price: Double
+    var discount: Double
+}
+
+func calculateDiscount(goods: [Goods], discountClosure: (Goods) -> Double) -> Double {
+    goods.reduce(0) { discount, good in
+        discount + discountClosure(good)
+    }
+}
+
+let discountClosure: (Goods) -> Double = { good in
+    good.price * (good.discount / 100)
+}
+
+let goods: [Goods] = [
+    Goods(price: 62, discount: 5),
+    Goods(price: 154, discount: 10),
+    Goods(price: 270, discount: 15),
+]
+
+let discountSum = calculateDiscount(goods: goods, discountClosure: discountClosure)
+print("Total discount: \(discountSum)")
+print("-----------------------------------")
