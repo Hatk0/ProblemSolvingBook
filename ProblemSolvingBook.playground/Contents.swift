@@ -4836,3 +4836,76 @@ pants.displayInfo()
 
 skirt.displayInfo()
 print("-----------------------------------")
+
+/// **№177. Уведомление о назначении задачи**
+class User {
+
+    let id: Int
+    let name: String
+
+    init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
+}
+
+class ToDoItem {
+
+    var title: String
+    var description: String
+    var status: String
+    var assignedUserID: Int?
+
+    static var userList: [User] = []
+
+    init(
+        title: String,
+        description: String,
+        status: String,
+        assignedUserID: Int? = nil
+    ) {
+        self.title = title
+        self.description = description
+        self.status = status
+        self.assignedUserID = assignedUserID
+    }
+
+    func changeStatus(to newStatus: String) {
+        self.status = newStatus
+        sendNotification()
+    }
+
+    func sendNotification() {
+        if let userID = assignedUserID {
+            if let user = ToDoItem.userList.first(where: { $0.id == userID }) {
+                print("Уведомление: Пользователь \(user.name), задача \(title) изменила статус на '\(status)'")
+            } else {
+                print("Ошибка: Пользователь с ID \(assignedUserID ?? 0) не найден")
+            }
+        } else {
+            print("Уведомление: Все пользователи, задача \(title) изменила статус на '\(status)'")
+        }
+    }
+}
+
+let firstUser = User(id: 1, name: "Джон")
+let secondUser = User(id: 2, name: "Джейн")
+let thirdUser = User(id: 3, name: "Джэк")
+
+ToDoItem.userList = [firstUser, secondUser, thirdUser]
+
+let firstToDoTask = ToDoItem(
+    title: "Сделать отчёт",
+    description: "Отчёт по проекту",
+    status: "Бэклог",
+    assignedUserID: 1
+)
+firstToDoTask.changeStatus(to: "Выполняется")
+
+let secondToDoTask = ToDoItem(
+    title: "Обновить приложение",
+    description: "Добавить новые функции",
+    status: "Выполняется"
+)
+secondToDoTask.changeStatus(to: "На проверке")
+print("-----------------------------------")
