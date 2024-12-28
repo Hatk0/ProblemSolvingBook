@@ -4909,3 +4909,28 @@ let secondToDoTask = ToDoItem(
 )
 secondToDoTask.changeStatus(to: "На проверке")
 print("-----------------------------------")
+
+/// **№178. Memberwise init**
+struct Application {
+    let publisher: String
+    let version: String
+    let releaseDate: Date
+    var isPublished: Bool
+}
+
+let firstApplication = Application(
+    publisher: "Apple",
+    version: "1.0",
+    releaseDate: Date(),
+    isPublished: true
+)
+print("Автор: \(firstApplication.publisher), версия: \(firstApplication.version), дата: \(firstApplication.releaseDate), опубликовано: \(firstApplication.isPublished)")
+
+let secondApplication = Application(
+    publisher: "Google",
+    version: "2.0",
+    releaseDate: Date(),
+    isPublished: false
+)
+print("\nАвтор: \(secondApplication.publisher), версия: \(secondApplication.version), дата: \(secondApplication.releaseDate), опубликовано: \(secondApplication.isPublished)")
+print("-----------------------------------")
