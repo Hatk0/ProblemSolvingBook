@@ -3958,3 +3958,43 @@ print(tasksWithLength15)
 let customFilteredTasks = filterWeddingTasks(weddingTasks, filter: .custom { $0.hasSuffix("e") })
 print(customFilteredTasks)
 print("-----------------------------------")
+
+/// **№166. Автоматизация управления дверью**
+class DoorController {
+
+    func openDoor(completion: (Bool) -> Void) {
+        print("Attempting to open the door...")
+        completion(true)
+    }
+
+    func closeDoor(completion: (Bool) -> Void) {
+        print("Attempting to close the door...")
+        completion(true)
+    }
+}
+
+class SecuritySystem {
+
+    private var isDayTime: Bool {
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: Date())
+        return hour >= 6 && hour < 18
+    }
+
+    func checkAccess(completion: (Bool) -> Void) {
+        let accessGranted = isDayTime
+        print("Access \(accessGranted ? "granted" : "denied") based on time of day")
+        completion(accessGranted)
+    }
+}
+
+let doorController = DoorController()
+let securitySystem = SecuritySystem()
+
+doorController.openDoor { isOpen in
+    securitySystem.checkAccess { isAccessGranted in
+        print("Door \(isOpen ? "opened" : "closed")")
+        print("Security system \(isAccessGranted ? "allowed" : "denied") access")
+    }
+}
+print("-----------------------------------")
