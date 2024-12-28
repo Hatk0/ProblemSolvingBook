@@ -3911,3 +3911,50 @@ let sumNumbersArray = [1, 2, 3, 4, 5]
 let sumResult = sumElementsMultipliedByIndex(numbers: sumNumbersArray)
 
 print(sumResult)
+print("-----------------------------------")
+
+/// **№165. Приложение для организации свадьбы**
+enum WeddingTaskFilter {
+    case startsWith(String)
+    case contains(String)
+    case length(Int)
+    case custom((String) -> Bool)
+}
+
+func filterWeddingTasks(_ tasks: [String], filter: WeddingTaskFilter) -> [String] {
+    switch filter {
+    case .startsWith(let prefix):
+        return tasks.filter { $0.hasPrefix(prefix) }
+    case .contains(let substring):
+        return tasks.filter { $0.contains(substring) }
+    case .length(let length):
+        guard length > 0 else {
+            print("Length must be greater than 0.")
+            return []
+        }
+        return tasks.filter { $0.count == length }
+    case .custom(let closure):
+        return tasks.filter(closure)
+    }
+}
+
+let weddingTasks = [
+    "Buy wedding dress",
+    "Book venue",
+    "Send invitations",
+    "Order wedding cake",
+    "Plan honeymoon"
+]
+
+let tasksStartingWithBuy = filterWeddingTasks(weddingTasks, filter: .startsWith("Buy"))
+print(tasksStartingWithBuy)
+
+let tasksContainingWedding = filterWeddingTasks(weddingTasks, filter: .contains("wedding"))
+print(tasksContainingWedding)
+
+let tasksWithLength15 = filterWeddingTasks(weddingTasks, filter: .length(15))
+print(tasksWithLength15)
+
+let customFilteredTasks = filterWeddingTasks(weddingTasks, filter: .custom { $0.hasSuffix("e") })
+print(customFilteredTasks)
+print("-----------------------------------")
