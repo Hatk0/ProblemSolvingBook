@@ -4769,3 +4769,70 @@ let electricalRepair = ElectricalRepair()
 electricalRepair.perform()
 print("Предполагаемая стоимость ремонтных работ по электроснабжению: \(electricalRepair.estimateCost()) руб.")
 print("-----------------------------------")
+
+/// **№176. Швейная фабрика**
+class Garment {
+
+    var size: String
+    var color: String
+    final var seamstress: String
+
+    init(
+        size: String,
+        color: String,
+        seamstress: String
+    ) {
+        self.size = size
+        self.color = color
+        self.seamstress = seamstress
+    }
+
+    func displayInfo() {
+        print("Размер \(size), цвет \(color), швея \(seamstress)")
+    }
+}
+
+class Shirt: Garment {
+
+    override var size: String {
+        didSet {
+            print("Размер рубашки изменен на \(size)")
+        }
+    }
+
+    override func displayInfo() {
+        print("Рубашка: размер \(size), цвет \(color), швея \(seamstress)")
+    }
+}
+
+class Pants: Garment {
+
+    override var color: String {
+        didSet {
+            print("Цвет брюк изменен на \(color)")
+        }
+    }
+
+    override func displayInfo() {
+        print("Брюки: размер \(size), цвет \(color), швея \(seamstress)")
+    }
+}
+
+class Skirt: Garment {
+
+}
+
+let shirt = Shirt(size: "M", color: "Синий", seamstress: "Анна")
+let pants = Pants(size: "L", color: "Красный", seamstress: "Александр")
+let skirt = Skirt(size: "S", color: "Белый", seamstress: "Ольга")
+
+shirt.displayInfo()
+shirt.size = "XL"
+shirt.displayInfo()
+
+pants.displayInfo()
+pants.color = "Чёрный"
+pants.displayInfo()
+
+skirt.displayInfo()
+print("-----------------------------------")
