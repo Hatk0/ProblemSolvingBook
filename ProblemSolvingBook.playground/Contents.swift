@@ -4388,3 +4388,138 @@ suv.displayInfo()
 let sportsCar = SportsCar(brand: "Mercedes", color: "Красный", manufactureYear: 2021, topSpeed: 250)
 sportsCar.displayInfo()
 print("-----------------------------------")
+
+/// **№172. Управление банковскими счетами**
+class Account {
+
+    var accountNumber: String
+    var balance: Double
+
+    init(accountNumber: String, balance: Double) {
+        self.accountNumber = accountNumber
+        self.balance = balance
+    }
+
+    func displayInfo() {
+        print("Номер счета: \(accountNumber), Баланс: \(balance)")
+    }
+
+    func deposit(amount: Double) {
+        balance += amount
+        print("Внесено \(amount) на счет \(accountNumber). Новый баланс: \(balance) руб.")
+    }
+
+    func withdraw(amount: Double) {
+        guard amount <= balance else {
+            print("Недостаточно средств на счете \(accountNumber)")
+            return
+        }
+        balance -= amount
+        print("Снято \(amount) с счет \(accountNumber). Новый баланс: \(balance) руб.")
+    }
+}
+
+class SavingsAccount: Account {
+
+    var interestrate: Double
+
+    init(
+        accountNumber: String,
+        balance: Double,
+        interestrate: Double
+    ) {
+        self.interestrate = interestrate
+        super.init(accountNumber: accountNumber, balance: balance)
+    }
+
+    override func displayInfo() {
+        super.displayInfo()
+        print("Процентная ставка: \(interestrate)%")
+    }
+
+    func applyInterest() {
+        balance += balance * interestrate / 100
+        print("Применено процентное состояние на счет \(accountNumber). Новый баланс: \(balance) руб.")
+    }
+}
+
+class CreditAccount: Account {
+
+    var creditLimit: Double
+
+    init(
+        accountNumber: String,
+        balance: Double,
+        creditLimit: Double
+    ) {
+        self.creditLimit = creditLimit
+        super.init(accountNumber: accountNumber, balance: balance)
+    }
+
+    override func displayInfo() {
+        super.displayInfo()
+        print("Кредитный лимит: \(creditLimit) руб.")
+    }
+
+    func checkAvailableCredit() -> Double {
+        creditLimit + balance
+    }
+}
+
+class InvestmentAccount: Account {
+    var investmentTerm: Int
+    var riskLevel: String
+
+    init(
+        accountNumber: String,
+        balance: Double,
+        investmentTerm: Int,
+        riskLevel: String
+    ) {
+        self.investmentTerm = investmentTerm
+        self.riskLevel = riskLevel
+        super.init(accountNumber: accountNumber, balance: balance)
+    }
+
+    override func displayInfo() {
+        super.displayInfo()
+        print("Срок инвестирования: \(investmentTerm) лет, Уровень риска: \(riskLevel)")
+    }
+
+    func estimateInvestmentReturn() -> Double {
+        let expectedReturn = balance * (Double(investmentTerm) * 0.05)
+        return expectedReturn
+    }
+}
+
+let savingsAccount = SavingsAccount(
+    accountNumber: "43534512",
+    balance: 1_000_000,
+    interestrate: 2
+)
+savingsAccount.displayInfo()
+savingsAccount.applyInterest()
+savingsAccount.deposit(amount: 10000)
+savingsAccount.withdraw(amount: 6800)
+
+let creditAccount = CreditAccount(
+    accountNumber: "1314543563",
+    balance: 500_000,
+    creditLimit: 200_000
+)
+creditAccount.displayInfo()
+creditAccount.deposit(amount: 10000)
+creditAccount.withdraw(amount: 6800)
+creditAccount.checkAvailableCredit()
+
+let investmentAccount = InvestmentAccount(
+    accountNumber: "43534512",
+    balance: 1_000_000,
+    investmentTerm: 5,
+    riskLevel: "Высокий"
+)
+investmentAccount.displayInfo()
+investmentAccount.deposit(amount: 10000)
+investmentAccount.withdraw(amount: 6800)
+print(investmentAccount.estimateInvestmentReturn())
+print("-----------------------------------")
