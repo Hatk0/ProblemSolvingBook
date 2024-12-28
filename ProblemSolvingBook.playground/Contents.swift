@@ -4683,3 +4683,37 @@ aiProject.displayInfo()
 print("Продолжительность проекта: \(aiProject.calculateDuration())")
 print("Оценочный бюджет: \(aiProject.estimateBudget()) руб.")
 print("-----------------------------------")
+
+/// **№174. Животные и их голоса**
+class Animal {
+
+    func makeSound() {
+        print("Общий звук")
+    }
+
+    static func describe() {
+        print("Животное - это живое существо, которое издает звуки")
+    }
+}
+
+class Cat: Animal {
+
+    override func makeSound() {
+        print("Мяу!")
+    }
+
+//    override static func describe() {
+//        print("Кот - это домашнее животное, которое часто издает мяуканье")
+//    }
+}
+
+let animal = Animal()
+let cat = Cat()
+
+print("Звук для Animal:")
+animal.makeSound()
+Animal.describe()
+
+print("\nЗвук для Cat:")
+cat.makeSound()
+Cat.describe()
