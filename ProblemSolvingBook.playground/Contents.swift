@@ -4106,3 +4106,178 @@ let goods: [Goods] = [
 let discountSum = calculateDiscount(goods: goods, discountClosure: discountClosure)
 print("Total discount: \(discountSum)")
 print("-----------------------------------")
+
+/// **№170. Магическая битва**
+class Creature {
+
+    var name: String
+    var health: Int
+    var attack: Int
+    var defence: Int
+
+    init(
+        name: String,
+        health: Int,
+        attack: Int,
+        defence: Int
+    ) {
+        self.name = name
+        self.health = health
+        self.attack = attack
+        self.defence = defence
+    }
+
+    func attack(creature: Creature) {
+        let damage = max(0, self.attack - creature.defence)
+        creature.health -= damage
+        print("\(self.name) аттакует \(creature.name), нанося \(damage) урона")
+    }
+
+    func defend(creature: Creature) {
+        self.defence += 5
+        print("\(self.name) усиливает свою защиту")
+    }
+}
+
+class Wizard: Creature {
+
+    var mana: Int
+
+    init(
+        name: String,
+        health: Int,
+        attack: Int,
+        defence: Int,
+        mana: Int
+    ) {
+        self.mana = mana
+        super.init(
+            name: name,
+            health: health,
+            attack: attack,
+            defence: defence
+        )
+    }
+
+    func castSpell(creature: Creature) {
+        if mana >= 10 {
+            let spellDamage = self.attack * 2
+            creature.health -= spellDamage
+            mana -= 10
+            print("\(self.name) использует магию, нанося \(spellDamage) урона")
+        } else {
+            print("\(self.name) не хваетет маны для использования магии")
+        }
+    }
+
+    func restoreMana() {
+        mana += 5
+        print("\(self.name) восстанавливает 5 маны")
+    }
+}
+
+class Dragon: Creature {
+
+    var fireBreathCoolDown: Int
+
+    init(
+        name: String,
+        health: Int,
+        attack: Int,
+        defence: Int,
+        fireBreathCoolDown: Int
+    ) {
+        self.fireBreathCoolDown = fireBreathCoolDown
+        super.init(
+            name: name,
+            health: health,
+            attack: attack,
+            defence: defence
+        )
+    }
+
+    func breatheFire(creature: Creature) {
+        if fireBreathCoolDown == 0 {
+            let fireBreathDamage = self.attack * 3
+            creature.health -= fireBreathDamage
+            fireBreathCoolDown = 5
+            print("\(self.name) использует огненный дыхание, нанося \(fireBreathDamage) урона")
+        } else {
+            print("\(self.name) не может использовать дыхание огня, нужно подождать")
+        }
+    }
+
+    func passTurn() {
+        if fireBreathCoolDown > 0 {
+            fireBreathCoolDown -= 1
+            print("\(self.name) отдыхает, \(fireBreathCoolDown) ходов до восстановления дыхания огня")
+        }
+    }
+}
+
+class Goblin: Creature {
+
+    var sneakAttack: Bool
+
+    init(
+        name: String,
+        health: Int,
+        attack: Int,
+        defence: Int,
+        sneakAttack: Bool
+    ) {
+        self.sneakAttack = sneakAttack
+        super.init(
+            name: name,
+            health: health,
+            attack: attack,
+            defence: defence
+        )
+    }
+
+    func sneakAttackCreature(creature: Creature) {
+        if sneakAttack {
+            let sneakAttackDamage = attack * 2
+            creature.health -= sneakAttackDamage
+            sneakAttack = false
+            print("\(self.name) совершает скрытую атаку, нанося \(sneakAttackDamage) урона!")
+        } else {
+            print("\(self.name) не может использовать скрытую атаку")
+        }
+    }
+
+    func recoverSneakAttack() {
+        sneakAttack = true
+        print("\(self.name) восстанавливает скрытую атаку")
+    }
+}
+
+let wizard = Wizard(
+    name: "Гарри",
+    health: 100,
+    attack: 20,
+    defence: 7,
+    mana: 35
+)
+let dragon = Dragon(
+    name: "Дракон",
+    health: 300,
+    attack: 40,
+    defence: 15,
+    fireBreathCoolDown: 3
+)
+let goblin = Goblin(
+    name: "Гоблин",
+    health: 50,
+    attack: 10,
+    defence: 5,
+    sneakAttack: false
+)
+
+wizard.attack(creature: dragon)
+dragon.breatheFire(creature: wizard)
+goblin.sneakAttackCreature(creature: dragon)
+
+wizard.castSpell(creature: goblin)
+goblin.recoverSneakAttack()
+print("-----------------------------------")
