@@ -3885,3 +3885,15 @@ for contact in filteredContacts {
     print("Name: \(contact.name), Phone: \(contact.phoneNumber), Email: \(contact.email)")
 }
 print("-----------------------------------")
+
+/// **№163. Преобразование массива строк в массив чисел**
+func filterAndConvertToInts(_ strings: [String]) -> [Int] {
+    guard !strings.isEmpty else { return [] }
+    return strings.compactMap { Int($0) }
+}
+
+let inputArray = ["123", "abc", "456", "78a", "90"]
+let filterResult = filterAndConvertToInts(inputArray)
+
+print(filterResult)
+print("-----------------------------------")
