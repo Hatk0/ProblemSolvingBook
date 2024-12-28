@@ -3897,3 +3897,17 @@ let filterResult = filterAndConvertToInts(inputArray)
 
 print(filterResult)
 print("-----------------------------------")
+
+/// **№164. Reduce**
+func sumElementsMultipliedByIndex(numbers: [Int]) -> Int {
+    numbers.enumerated().reduce(0) { accumulator, element in
+        let index = element.offset
+        let value = element.element
+        return accumulator + value * index
+    }
+}
+
+let sumNumbersArray = [1, 2, 3, 4, 5]
+let sumResult = sumElementsMultipliedByIndex(numbers: sumNumbersArray)
+
+print(sumResult)
