@@ -5089,3 +5089,32 @@ print(apartment.propertyDetails())
 print(house.propertyDetails())
 print(cottage.propertyDetails())
 print("-----------------------------------")
+
+/// **№181. Учет детей в детском саду**
+class Child {
+
+    let name: String
+    var age: Int
+
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+
+    convenience init(name: String) {
+        self.init(name: name, age: 3)
+    }
+
+    func childDetails() -> String {
+        return "Имя: \(name), Возраст: \(age) лет"
+    }
+}
+
+let firstChild = Child(name: "Иван", age: 4)
+let secondChild = Child(name: "Петр")
+let thirdChild = Child(name: "Александр")
+
+print(firstChild.childDetails())
+print(secondChild.childDetails())
+print(thirdChild.childDetails())
+print("-----------------------------------")
