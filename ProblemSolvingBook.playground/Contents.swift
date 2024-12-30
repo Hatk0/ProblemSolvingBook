@@ -4962,3 +4962,130 @@ print("Цвет: \(defaultSofa.color), материал: \(defaultSofa.material)
 let customSofa = Sofa(color: "Синий", material: "Фабричная", size: "Средний", price: 80_000)
 print("Цвет: \(customSofa.color), материал: \(customSofa.material), размер: \(customSofa.size), цena: \(customSofa.price)")
 print("-----------------------------------")
+
+/// **№180. Управление арендой квартир**
+class Property {
+
+    var address: String
+    var area: Double
+    var rentalPrice: Double
+
+    init(
+        address: String,
+        area: Double,
+        rentalPrice: Double
+    ) {
+        self.address = address
+        self.area = area
+        self.rentalPrice = rentalPrice
+    }
+
+    func propertyDetails() -> String {
+        "Адрес: \(address), Площадь: \(area) кв.м, Цена аренды: \(rentalPrice) руб./мес"
+    }
+}
+
+class Apartment: Property {
+
+    var numberOfRooms: Int
+    var hasBalcony: Bool
+
+    init(
+        address: String,
+        area: Double,
+        rentalPrice: Double,
+        numberOfRooms: Int,
+        hasBalcony: Bool
+    ) {
+        self.numberOfRooms = numberOfRooms
+        self.hasBalcony = hasBalcony
+        super.init(
+            address: address,
+            area: area,
+            rentalPrice: rentalPrice
+        )
+    }
+
+    override func propertyDetails() -> String {
+        super.propertyDetails() + ", Комнат: \(numberOfRooms), Балкон: \(hasBalcony ? "Да" : "Нет")"
+    }
+}
+
+class House: Property {
+
+    var hasGarage: Bool
+    var yardArea: Double
+
+    init(
+        address: String,
+        area: Double,
+        rentalPrice: Double,
+        hasGarage: Bool,
+        yardArea: Double
+    ) {
+        self.hasGarage = hasGarage
+        self.yardArea = yardArea
+        super.init(
+            address: address,
+            area: area,
+            rentalPrice: rentalPrice
+        )
+    }
+
+    override func propertyDetails() -> String {
+        return super.propertyDetails() + ", Гараж: \(hasGarage ? "Да" : "Нет"), Площадь двора: \(yardArea) кв.м"
+    }
+}
+
+class Cottage: Property {
+
+    var hasPool: Bool
+    var fireplaceType: String
+
+    init(
+        address: String,
+        area: Double,
+        rentalPrice: Double,
+        hasPool: Bool,
+        fireplaceType: String
+    ) {
+        self.hasPool = hasPool
+        self.fireplaceType = fireplaceType
+        super.init(
+            address: address,
+            area: area,
+            rentalPrice: rentalPrice
+        )
+    }
+
+    override func propertyDetails() -> String {
+        return super.propertyDetails() + ", Бассейн: \(hasPool ? "Да" : "Нет"), Тип камина: \(fireplaceType)"
+    }
+}
+
+let apartment = Apartment(
+    address: "ул. Ленина, 123",
+    area: 50,
+    rentalPrice: 70_000,
+    numberOfRooms: 2,
+    hasBalcony: true
+)
+let house = House(
+    address: "ул. Пушкина, 456",
+    area: 120,
+    rentalPrice: 56_000,
+    hasGarage: true,
+    yardArea: 50
+)
+let cottage = Cottage(
+    address: "ул. Садовая, 789",
+    area: 200,
+    rentalPrice: 125_000,
+    hasPool: true,
+    fireplaceType: "Дровяной"
+)
+
+print(apartment.propertyDetails())
+print(house.propertyDetails())
+print(cottage.propertyDetails())
+print("-----------------------------------")
