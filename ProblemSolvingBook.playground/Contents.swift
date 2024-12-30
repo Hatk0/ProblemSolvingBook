@@ -5118,3 +5118,115 @@ print(firstChild.childDetails())
 print(secondChild.childDetails())
 print(thirdChild.childDetails())
 print("-----------------------------------")
+
+/// **№182. Управление персоналом**
+class Employee {
+
+    var name: String
+    var age: Int
+    var position: String
+
+    init(
+        name: String,
+        age: Int,
+        position: String
+    ) {
+        self.name = name
+        self.age = age
+        self.position = position
+    }
+
+    func employeeDetails() -> String {
+        return "Имя: \(name), Возраст: \(age), Должность: \(position)"
+    }
+}
+
+class Manager: Employee {
+
+    var yearsOfExperience: Int
+
+    init(
+        name: String,
+        age: Int,
+        position: String = "Менеджер",
+        yearsOfExperience: Int
+    ) {
+        self.yearsOfExperience = yearsOfExperience
+        super.init(
+            name: name,
+            age: age,
+            position: position
+        )
+    }
+
+    override func employeeDetails() -> String {
+        return super.employeeDetails() + ", Опыт работы: \(yearsOfExperience) лет"
+    }
+}
+
+class Developer: Employee {
+
+    var programmingLanguages: [String]
+
+    init(
+        name: String,
+        age: Int,
+        position: String = "Разработчик",
+        programmingLanguages: [String]
+    ) {
+        self.programmingLanguages = programmingLanguages
+        super.init(
+            name: name,
+            age: age,
+            position: position
+        )
+    }
+
+    override func employeeDetails() -> String {
+        return super.employeeDetails() + ", Языки программирования: \(programmingLanguages.joined(separator: ", "))"
+    }
+}
+
+class HumanResourcesManager: Employee {
+
+    var skills: [String]
+
+    init(
+        name: String,
+        age: Int,
+        position: String = "HR-специалист",
+        skills: [String]
+    ) {
+        self.skills = skills
+        super.init(
+            name: name,
+            age: age,
+            position: position
+        )
+    }
+
+    override func employeeDetails() -> String {
+        return super.employeeDetails() + ", Навыки: \(skills.joined(separator: ", "))"
+    }
+}
+
+let manager = Manager(
+    name: "Анна Иванова",
+    age: 35,
+    yearsOfExperience: 10
+)
+let developer = Developer(
+    name: "Иван Петров",
+    age: 28,
+    programmingLanguages: ["Swift", "Python", "Ruby"]
+)
+let hrSpecialist = HumanResourcesManager(
+    name: "Мария Смирнова",
+    age: 30,
+    skills: ["Рекрутинг", "Обучение персонала", "Управление конфликтами"]
+)
+
+print(manager.employeeDetails())
+print(developer.employeeDetails())
+print(hrSpecialist.employeeDetails())
+print("-----------------------------------")
